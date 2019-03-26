@@ -1,1 +1,4 @@
-//dette er en test
+
+
+
+typedef enum {INIT, IDLE, MOVING, STOP, ESTOP} state;
