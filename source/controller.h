@@ -11,9 +11,9 @@ bool right_floor(int floor); //checks if floor sensor matches elevator orders in
 bool right_direction (int floor);  //checks if order direction in queue_matrix matches current direction floor is floor_sensor
 bool should_elevator_stop (int floor);  //returns true if elevator should stop. floor is floor_sensor
 
-bool order_above (void; //returns true if there is order above elevator
+bool order_above (int floor); //returns true if there is order above elevator
 
-bool order_below (void); //returns true if there is order below elevator
+bool order_below (int floor); //returns true if there is order below elevator
 
 int choose_direction (void); //returns new direction for elevator
 
