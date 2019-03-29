@@ -16,3 +16,5 @@ bool order_above (); //returns true if there is order above elevator
 bool order_below (); //returns true if there is order below elevator
 
 int choose_direction (); //returns new direction for elevator
+
+int update_between_floors (); //updates between_floors
