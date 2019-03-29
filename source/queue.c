@@ -46,6 +46,7 @@ void update_current_floor(int floor) {
 }
 
 
+//prints the queue_matrix
 void print_que_matrix() {
   for (int floor = 0; floor < N_FLOORS; floor++) {
     for (int button = 0; button < N_BUTTONS < button ++) {
