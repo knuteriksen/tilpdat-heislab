@@ -20,3 +20,5 @@ int choose_direction (void); //returns new direction for elevator
 void update_between_floors (void); //updates between_floors
 
 void update_current_direction (void); //updates current direction
+
+//
