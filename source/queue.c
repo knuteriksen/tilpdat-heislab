@@ -31,7 +31,7 @@ void reset_floor (int floor){
 void update_matrix(void) {
   for (int floor = 0; floor < N_FLOORS; floor++) {
     for (int button = 0; button < N_BUTTONS; button++) {
-      if elev_get_button_signal(button, floor) {
+      if (elev_get_button_signal(button, floor)) {
         queue_matrix[floor][button] = 1;
         elev_set_button_lamp(button, floor, 1);
       }
