@@ -4,7 +4,7 @@
 #include "queue.h"
 
 
-typedef enum {INIT, IDLE, MOVING, DOOR_OPEN, EMERGENCY_STOP} state;
+typedef enum {IDLE, MOVING, DOOR_OPEN, EMERGENCY_STOP} state;
 
 void state_update_current_floor (int floor); //updates current floor
 
@@ -17,3 +17,6 @@ void state_emergency_stop_button_pushed (void); //if emergency stop button is pu
 void state_emergency_stop_button_released (void); //if emergency stop button is released
 
 void state_execute_new_order (void); //executes new order if there is any
+
+
+//kom denne pushen med

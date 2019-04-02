@@ -1,4 +1,4 @@
-#include "elev.h"
+/*#include "elev.h"
 #include <stdio.h>
 #include "queue.h"
 
@@ -40,4 +40,21 @@ int main() {
     }
 
     return 0;
+}
+*/
+
+
+#include <stdio.h>
+#include "timer.h"
+
+int main () {
+
+  start_timer();
+
+  while (!time_is_up()) {
+    printf("3");
+  }
+  printf("time is up");
+
+  return 0;
 }

@@ -94,7 +94,7 @@ void state_emergency_stop_button_pushed (void) {
 
 void state_emergency_stop_button_released (void) {
 
-  elev_set_stop_lamp(0);
+  elev_set_stop_lamp(0);  //tursn of stop light
 
   switch (state) {
 
@@ -111,9 +111,30 @@ void state_emergency_stop_button_released (void) {
       break;
 
     case (EMERGENCY_STOP):
+      state = IDLE;
+      break;
+  }
+}
+
+void state_execute_new_order (void) {
+
+  switch (state) {
+
+    case (IDLE):
+      elev_set_motor_direction (queue_choose_direction(current_floor)); //sets motor direction to new calculated direction;
+      state = MOVING;
+      break;
+
+    case (MOVING):
+      state = MOVING;
+      break;
+
+    case (DOOR_OPEN):
+      state = DOOR_OPEN;
+      break;
+
+    case (EMERGENCY_STOP):
       state = EMERGENCY_STOP;
       break;
   }
-
-
 }
