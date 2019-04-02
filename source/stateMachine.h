@@ -1,14 +1,19 @@
+#include "channels.h"
+#include "elev.h"
+#include "io.h"
+#include "queue.h"
 
 
+typedef enum {INIT, IDLE, MOVING, DOOR_OPEN, EMERGENCY_STOP} state;
 
-typedef enum {INIT, IDLE, MOVING, STOP, ESTOP} state;
+void state_update_current_floor (int floor); //updates current floor
 
-int current_floor; //current floor variable
+void state_open_door (void); // if queue_should_elevator_stop == true
 
-int between_floors; //which floors is the elevator between. 0 is between first and second, 1 is between second and third, 2 is between third and fourth
+void state_close_door (void); // if door has been open for 3 sec
 
-int current_direction; //last direction elevator had. -1 is down, 0 is idle, 1 is up
+void state_emergency_stop_button_pushed (void); //if emergency stop button is pushed
 
-void init(); //set current state to INIT
+void state_emergency_stop_button_released (void); //if emergency stop button is released
 
-void set_state(state s); //changes the state to s
+void state_execute_new_order (void); //executes new order if there is any

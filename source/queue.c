@@ -7,7 +7,7 @@
 
 
 //create queue matrix
-int queue_initialize_matrix [N_FLOORS_2][N_BUTTONS_2] = {} ;
+int queue_matrix [N_FLOORS_2][N_BUTTONS_2] = {} ;
 
  //sets all queue_matrix values to 0 and turns off lights
 void queue_reset_queue_matrix(void) {
@@ -85,11 +85,6 @@ void queue_update_matrix(void) {
   }
 }
 
-//updates current floor and turns corresponding light on
-void queue_update_current_floor(int floor) {
-  current_floor = floor;
-  elev_set_floor_indicator(floor);
-}
 
 //prints the queue_matrix
 void queue_print_que_matrix() {
@@ -102,8 +97,8 @@ void queue_print_que_matrix() {
 }
 
 //checks if floor sensor matches BUTTON_COMMAND orders in queue_matrix. floor is floor_sensor
-bool queue_right_floor(int floor) {
-  return( queue_matrix[floor][N_FLOORS - 1] == 1 ) ;
+bool queue_cab_right_floor(int floor) {
+  return( queue_matrix[floor][N_BUTTONS_2 - 1] == 1 ) ;
 }
 
 //checks if BUTTON_CALL_UP OR BUTTON_CALL_DOWN at floor in queue_matrix matches current direction. floor is floor_sensor
@@ -114,13 +109,13 @@ bool queue_right_direction(int floor, int current_dir) {
 
 //checks if elevator should stop if current direction does not equel order direction
 bool queue_wrong_direction_stop (int floor, int current_dir){
-    return( ((current_dir == DIRN_DOWN) && (queue_matrix[floor][DIRN_UP] == 1) && (queue_order_above == true)) ||
-    ((current_dir == DIRN_UP) && (queue_matrix[floor][DIRN_DOWN] == 1) && (queue_order_below == true)) );
+    return( ((current_dir == DIRN_DOWN) && (queue_matrix[floor][DIRN_UP] == 1) && (queue_order_below(floor) == false)) ||
+    ((current_dir == DIRN_UP) && (queue_matrix[floor][DIRN_DOWN] == 1) && (queue_order_above(floor) == false)) );
 }
 
 //returns true if elevator should stop. floor is floor_sensor
 bool queue_should_elevator_stop(int floor, int current_dir {
-  return( queue_right_floor(floor) ||
+  return( queue_cab_right_floor(floor) ||
   queue_right_direction(floor, current_dir) ||
   queue_wrong_direction_stop(floor, current_dir) );
 }
@@ -155,4 +150,13 @@ bool queue_order_below(int floor) {
 
 //calculates next direction of elevator when elevator is stopped.
 int queue_choose_direction (int floor, int prev_dir) {
+  if (queue_order_above(floor)) {
+    return DIRN_UP;
+  }
+  else if (queue_order_below(floor)){
+    return DIRN_DOWN;
+  }
+  else {
+    return DIRN_STOP;
+  }
 }

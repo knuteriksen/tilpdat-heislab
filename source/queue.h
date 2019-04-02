@@ -9,13 +9,11 @@ void queue_reset_floor (int floor); //reset orders at floor "floor" and turns of
 
 void queue_update_matrix(void); // set orders and turns on light
 
-void queue_update_current_floor(int floor);  //updates current floor and turns corresponding light on
-
 void queue_print_que_matrix(); //prints the queue_matrix
 
 // queue_int get_order(int queue_matrix[N_FLOORS][N_BUTTONS]); trenger vi denne?
 
-bool queue_right_floor(int floor); //checks if floor sensor matches elevator orders in queue_matrix. floor is floor_sensor
+bool queue_cab_right_floor(int floor); //checks if floor sensor matches elevator orders in queue_matrix. floor is floor_sensor
 
 bool queue_right_direction (int floor, int current_dir);  //checks if order direction in queue_matrix matches current direction floor is floor_sensor
 
