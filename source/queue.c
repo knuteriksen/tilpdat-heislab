@@ -136,7 +136,7 @@ bool queue_order_above (int floor) {
 
 //returns true if there is order below elevator
 bool queue_order_below(int floor) {
-  if (loor > 0) {
+  if (floor > 0) {
     for (int f = floor - 1; f >= 0 ; f --) {
       for (int button = 0; button < N_BUTTONS; button ++){
         if (queue_matrix[f][button] == 1) {

@@ -6,6 +6,8 @@
 
 typedef enum {IDLE, MOVING, DOOR_OPEN, EMERGENCY_STOP} state;
 
+void FSM(void);
+
 void state_init (void); //initialize elevator
 
 void state_update_current_floor (void); //updates current floor

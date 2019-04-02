@@ -35,6 +35,9 @@ void state_open_door (void) {
   start_timer();               //starts timer
   queue_reset_floor(current_floor)  //resets orders at current floor and turns off lights at current floor
 
+//Denne funksjonen tenker jeg utfører hele stop-hendelsen for så
+
+
   switch (state) {
 
     case (IDLE):
@@ -152,5 +155,31 @@ void state_execute_new_order (void) {
     case (EMERGENCY_STOP):
       state = EMERGENCY_STOP;
       break;
+  }
+}
+
+void FSM(void) {
+
+
+switch (state) {
+
+  case (IDLE):
+
+    break;
+
+  case (MOVING):
+
+    break;
+
+  case (DOOR_OPEN):
+
+    break;
+    //Under er et eksempel på et event som trigger en transisjon og gjør at fsm oppdaterer staten
+  case (EMERGENCY_STOP): //må bruke funksjonen state_emergency_stop_button_pushed() for å sende til denne state
+    if (!elev_get_stop_signal()){
+      state_emergency_stop_button_released();
+      state = IDLE;
+    }
+    break;
   }
 }
