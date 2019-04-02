@@ -1,6 +1,7 @@
-/*#include "elev.h"
+#include "elev.h"
 #include <stdio.h>
 #include "queue.h"
+#include "stateMachine.h"
 
 
 
@@ -11,11 +12,27 @@ int main() {
         return 1;
     }
 
-    printf("Press STOP button to stop elevator and exit program.\n");
+    //printf("Press STOP button to stop elevator and exit program.\n");
 
-    elev_set_motor_direction(DIRN_UP);
-    int count = 0;
+    state_init (); //state is now in IDLE
+
     while (1) {
+
+      queue_update_matrix ();
+      state_update_current_floor();
+
+      if (queue_should_elevator_stop()) {
+        state_open_door();
+      }
+
+      if (time_is_up()) {
+        state_close_door();
+      }
+
+
+    }
+
+    /* while (1) {
         // Change direction when we reach top/bottom floor
         if (elev_get_floor_sensor_signal() == N_FLOORS - 1) {
             elev_set_motor_direction(DIRN_DOWN);
@@ -23,38 +40,13 @@ int main() {
             elev_set_motor_direction(DIRN_UP);
         }
 
-        if (count < 10) {
-        update_matrix();
-        print_que_matrix();
-        reset_queue_matrix();
-        count ++ ;
-        }
 
-        // Stop elevator and exit program if the stop button is pressed
+        Stop elevator and exit program if the stop button is pressed
         if (elev_get_stop_signal()) {
             elev_set_motor_direction(DIRN_STOP);
 
-            //break;
-        }
-
-    }
-
+            break;
+        }*/
+      }
     return 0;
-}
-*/
-
-
-#include <stdio.h>
-#include "timer.h"
-
-int main () {
-
-  start_timer();
-
-  while (!time_is_up()) {
-    printf("3");
-  }
-  printf("time is up");
-
-  return 0;
 }
