@@ -8,10 +8,15 @@ int current_direction; //last direction elevator had. -1 is down, 0 is idle, 1 i
 
 int between_floors; //which floors is the elevator between. 0 is between first and second, 1 is between second and third, 2 is between third and fourth
 
+static elev_state state;
+
+int get_current_floor(void) {
+  return current_floor;
+}
 
 void state_update_current_floor(void) {
-  if (elev_get_floor_sensor_signal != -1) {
-  current floor = elev_get_floor_sensor_signal;
+  if (elev_get_floor_sensor_signal() != -1) {
+  current_floor = elev_get_floor_sensor_signal();
   }
 }
 
@@ -22,6 +27,7 @@ void state_init (void){
   }
 
   elev_set_motor_direction(DIRN_STOP); //stop elevator
+  current_direction = DIRN_STOP;
   queue_reset_queue_matrix(); //reset all orders and turns off all lights
   state_update_current_floor(); //updates current floor
   elev_set_floor_indicator(current_floor); //turns on floor indicator on current floor
@@ -33,7 +39,7 @@ void state_open_door (void) {
 
   elev_set_door_open_lamp(1); //opens door
   start_timer();               //starts timer
-  queue_reset_floor(current_floor)  //resets orders at current floor and turns off lights at current floor
+  queue_reset_floor(current_floor);  //resets orders at current floor and turns off lights at current floor
 
 //Denne funksjonen tenker jeg utfører hele stop-hendelsen for så
 
@@ -140,7 +146,9 @@ void state_execute_new_order (void) {
   switch (state) {
 
     case (IDLE):
-      elev_set_motor_direction (queue_choose_direction(current_floor)); //sets motor direction to new calculated direction;
+      current_direction = queue_choose_direction(current_floor, current_direction);
+      elev_set_motor_direction (current_direction); //sets motor direction to new calculated direction;
+
       state = MOVING;
       break;
 
@@ -158,28 +166,6 @@ void state_execute_new_order (void) {
   }
 }
 
-void FSM(void) {
-
-
-switch (state) {
-
-  case (IDLE):
-
-    break;
-
-  case (MOVING):
-
-    break;
-
-  case (DOOR_OPEN):
-
-    break;
-    //Under er et eksempel på et event som trigger en transisjon og gjør at fsm oppdaterer staten
-  case (EMERGENCY_STOP): //må bruke funksjonen state_emergency_stop_button_pushed() for å sende til denne state
-    if (!elev_get_stop_signal()){
-      state_emergency_stop_button_released();
-      state = IDLE;
-    }
-    break;
-  }
+int get_current_direction(void) {
+  return current_direction;
 }

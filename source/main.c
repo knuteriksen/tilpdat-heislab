@@ -1,8 +1,11 @@
-#include "elev.h"
 #include <stdio.h>
-#include "queue.h"
-#include "stateMachine.h"
 
+
+#include "elev.h"
+#include "stateMachine.h"
+#include "queue.h"
+#include "timer.h"
+#include "io.h"
 
 
 int main() {
@@ -14,14 +17,21 @@ int main() {
 
     //printf("Press STOP button to stop elevator and exit program.\n");
 
-    state_init (); //state is now in IDLE
+    state_init(); //state is now in IDLE
+    int c_floor = get_current_floor();
+    int c_direction = get_current_direction();
 
     while (1) {
 
       queue_update_matrix ();
       state_update_current_floor();
+      c_floor = get_current_floor();
+      c_direction = get_current_direction();
 
-      if (queue_should_elevator_stop()) {
+      if (elev_get_floor_sensor_signal() != -1)
+        elev_set_floor_indicator(c_floor);
+
+      if (queue_should_elevator_stop(c_floor, c_direction)) {
         state_open_door();
       }
 
@@ -29,24 +39,17 @@ int main() {
         state_close_door();
       }
 
-
-    }
-
-    /* while (1) {
-        // Change direction when we reach top/bottom floor
-        if (elev_get_floor_sensor_signal() == N_FLOORS - 1) {
-            elev_set_motor_direction(DIRN_DOWN);
-        } else if (elev_get_floor_sensor_signal() == 0) {
-            elev_set_motor_direction(DIRN_UP);
-        }
-
-
-        Stop elevator and exit program if the stop button is pressed
-        if (elev_get_stop_signal()) {
-            elev_set_motor_direction(DIRN_STOP);
-
-            break;
-        }*/
+      if (elev_get_stop_signal()) {
+        state_emergency_stop_button_pushed();
+        while (elev_get_stop_signal());
+        state_emergency_stop_button_released();
       }
+
+      if (!queue_matrix_empty(get_current_floor())) {
+        state_execute_new_order();
+      }
+
+  }
+
     return 0;
 }

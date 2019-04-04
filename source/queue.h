@@ -1,4 +1,7 @@
+#include <stdbool.h>
+
 #include "elev.h"
+
 
 #define N_BUTTONS_2 3
 #define N_FLOORS_2 4
@@ -19,10 +22,14 @@ bool queue_right_direction (int floor, int current_dir);  //checks if order dire
 
 bool queue_wrong_direction_stop (int floor, int current_dir); //checks if elevator should stop if current direction does not equel order direction
 
-bool queue_should_elevator_stop (int floor);  //returns true if elevator should stop. floor is floor_sensor
+bool queue_should_elevator_stop (int floor, int current_dir);  //returns true if elevator should stop. floor is floor_sensor
 
 bool queue_order_above (int floor); //returns true if there is order above elevator
 
-bool queue_order_below (int floor); //returns true if there is order below elevator
+bool queue_order_below (int floor); //returns true if there is order below elevato
+
+bool queue_order_same_floor(int floor);
+
+bool queue_matrix_empty(int current_floor);
 
 int queue_choose_direction (int floor, int current_dir); //calculates next direction of elevator when elevator is stopped.

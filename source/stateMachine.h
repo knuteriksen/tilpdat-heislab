@@ -1,12 +1,12 @@
 #include "channels.h"
 #include "elev.h"
 #include "io.h"
+#include "timer.h"
 #include "queue.h"
 
 
-typedef enum {IDLE, MOVING, DOOR_OPEN, EMERGENCY_STOP} state;
+typedef enum state {IDLE, MOVING, DOOR_OPEN, EMERGENCY_STOP} elev_state;
 
-void FSM(void);
 
 void state_init (void); //initialize elevator
 
@@ -22,5 +22,7 @@ void state_emergency_stop_button_released (void); //if emergency stop button is 
 
 void state_execute_new_order (void); //executes new order if there is any
 
+int get_current_floor(void);
 
+int get_current_direction(void);
 //kom denne pushen med

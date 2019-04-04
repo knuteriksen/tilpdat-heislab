@@ -109,12 +109,12 @@ bool queue_right_direction(int floor, int current_dir) {
 
 //checks if elevator should stop if current direction does not equel order direction
 bool queue_wrong_direction_stop (int floor, int current_dir){
-    return( ((current_dir == DIRN_DOWN) && (queue_matrix[floor][DIRN_UP] == 1) && (queue_order_below(floor) == false)) ||
-    ((current_dir == DIRN_UP) && (queue_matrix[floor][DIRN_DOWN] == 1) && (queue_order_above(floor) == false)) );
+    return( ((current_dir == DIRN_DOWN) && (queue_matrix[floor][BUTTON_CALL_UP] == 1) && (queue_order_below(floor) == false)) ||
+    ((current_dir == DIRN_UP) && (queue_matrix[floor][BUTTON_CALL_DOWN] == 1) && (queue_order_above(floor) == false)) );
 }
 
 //returns true if elevator should stop. floor is floor_sensor
-bool queue_should_elevator_stop(int floor, int current_dir {
+bool queue_should_elevator_stop(int floor, int current_dir) {
   return( queue_cab_right_floor(floor) ||
   queue_right_direction(floor, current_dir) ||
   queue_wrong_direction_stop(floor, current_dir) );
@@ -123,8 +123,8 @@ bool queue_should_elevator_stop(int floor, int current_dir {
 //returns true if there is order above elevator
 bool queue_order_above (int floor) {
   if (floor < N_FLOORS_2 -1) {
-    for (int f = floor + 1; f < N_FLOORS ; f ++) {
-      for (int button = 0; button < N_BUTTONS; button ++){
+    for (int f = floor + 1; f < N_FLOORS_2 ; f ++) {
+      for (int button = 0; button < N_BUTTONS_2; button ++){
         if (queue_matrix[f][button] == 1) {
           return true;
         }
@@ -138,11 +138,20 @@ bool queue_order_above (int floor) {
 bool queue_order_below(int floor) {
   if (floor > 0) {
     for (int f = floor - 1; f >= 0 ; f --) {
-      for (int button = 0; button < N_BUTTONS; button ++){
+      for (int button = 0; button < N_BUTTONS_2; button ++){
         if (queue_matrix[f][button] == 1) {
           return true;
         }
       }
+    }
+  }
+  return false;
+}
+
+bool queue_order_same_floor(int floor) {
+  for (int button = 0; button < N_BUTTONS_2; button ++){
+    if (queue_matrix[floor][button] == 1) {
+      return true;
     }
   }
   return false;
@@ -159,4 +168,8 @@ int queue_choose_direction (int floor, int prev_dir) {
   else {
     return DIRN_STOP;
   }
+}
+
+bool queue_matrix_empty(int current_floor) {
+  return (!(queue_order_above(current_floor) || queue_order_below(current_floor) || queue_order_same_floor(current_floor)));
 }
