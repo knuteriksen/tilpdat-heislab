@@ -158,11 +158,13 @@ bool queue_order_same_floor(int floor) {
 }
 
 //calculates next direction of elevator when elevator is stopped.
-int queue_choose_direction (int floor, int prev_dir) {
-  if (queue_order_above(floor)) {
+int queue_choose_direction (int floor, int between_floors) {
+  if (queue_order_above(floor) ||
+  (queue_order_same_floor(floor) && (between_floors == -1))) {
     return DIRN_UP;
   }
-  else if (queue_order_below(floor)){
+  else if (queue_order_below(floor) ||
+  (queue_order_same_floor(floor) && (between_floors == 1))){
     return DIRN_DOWN;
   }
   else {

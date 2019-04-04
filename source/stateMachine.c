@@ -6,7 +6,7 @@ int current_floor; //current floor variable
 
 int current_direction; //last direction elevator had. -1 is down, 0 is idle, 1 is up
 
-int between_floors; //which floors is the elevator between. 0 is between first and second, 1 is between second and third, 2 is between third and fourth
+int between_floors; // -1 if under current floor, 1 if above current floor, 0 else
 
 static elev_state state;
 
@@ -16,9 +16,19 @@ int get_current_floor(void) {
 
 void state_update_current_floor(void) {
   if (elev_get_floor_sensor_signal() != -1) {
-  current_floor = elev_get_floor_sensor_signal();
+    current_floor = elev_get_floor_sensor_signal();
+    if (current_direction == DIRN_DOWN) {
+      between_floors = -1;
+    }
+    else if (current_direction ==DIRN_UP) {
+      between_floors = 1;
+    }
+    else if (current_direction == DIRN_STOP) {
+      between_floors = 0;
+    }
   }
 }
+
 
 //initialize elevator
 void state_init (void){
@@ -40,8 +50,6 @@ void state_open_door (void) {
   elev_set_door_open_lamp(1); //opens door
   start_timer();               //starts timer
   queue_reset_floor(current_floor);  //resets orders at current floor and turns off lights at current floor
-
-//Denne funksjonen tenker jeg utfører hele stop-hendelsen for så
 
 
   switch (state) {
@@ -146,7 +154,7 @@ void state_execute_new_order (void) {
   switch (state) {
 
     case (IDLE):
-      current_direction = queue_choose_direction(current_floor, current_direction);
+      current_direction = queue_choose_direction(current_floor, between_floors);
       elev_set_motor_direction (current_direction); //sets motor direction to new calculated direction;
 
       state = MOVING;

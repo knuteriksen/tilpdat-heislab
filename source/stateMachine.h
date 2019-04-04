@@ -25,4 +25,3 @@ void state_execute_new_order (void); //executes new order if there is any
 int get_current_floor(void);
 
 int get_current_direction(void);
-//kom denne pushen med

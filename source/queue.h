@@ -14,8 +14,6 @@ void queue_update_matrix(void); // set orders and turns on light
 
 void queue_print_que_matrix(); //prints the queue_matrix
 
-// queue_int get_order(int queue_matrix[N_FLOORS][N_BUTTONS]); trenger vi denne?
-
 bool queue_cab_right_floor(int floor); //checks if floor sensor matches elevator orders in queue_matrix. floor is floor_sensor
 
 bool queue_right_direction (int floor, int current_dir);  //checks if order direction in queue_matrix matches current direction floor is floor_sensor
@@ -32,4 +30,4 @@ bool queue_order_same_floor(int floor);
 
 bool queue_matrix_empty(int current_floor);
 
-int queue_choose_direction (int floor, int current_dir); //calculates next direction of elevator when elevator is stopped.
+int queue_choose_direction (int floor, int between_floors); //calculates next direction of elevator when elevator is stopped.

@@ -31,7 +31,7 @@ int main() {
       if (elev_get_floor_sensor_signal() != -1)
         elev_set_floor_indicator(c_floor);
 
-      if (queue_should_elevator_stop(c_floor, c_direction)) {
+      if (queue_should_elevator_stop(elev_get_floor_sensor_signal(), c_direction)) {
         state_open_door();
       }
 
