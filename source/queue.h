@@ -1,16 +1,10 @@
 #include <stdbool.h>
 
-#include "elev.h"
-
-
 /**
 * @file
 * @brief functions and operations on the queue matrix
 */
 
-
-#define N_BUTTONS_2 3
-#define N_FLOORS_2 4
 
 
 /**

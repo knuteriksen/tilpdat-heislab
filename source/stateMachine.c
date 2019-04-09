@@ -1,6 +1,9 @@
-#include "stateMachine.h"
-
 #include <stdio.h>
+
+#include "stateMachine.h"
+#include "elev.h"
+#include "queue.h"
+#include "timer.h"
 
 int current_floor; //current floor variable
 

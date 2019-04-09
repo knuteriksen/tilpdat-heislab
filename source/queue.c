@@ -1,22 +1,18 @@
 #include <stdio.h>
 
 #include "queue.h"
-
-//#include "elev.h"
-//#include "io.h"
-//#include "channels.h"
-
+#include "elev.h"
 
 //create queue matrix
-int queue_matrix [N_FLOORS_2][N_BUTTONS_2] = {} ;
+int queue_matrix [N_FLOORS][N_BUTTONS] = {} ;
 
- //sets all queue_matrix values to 0 and turns off lights
+ //sets alN_BUTTONSrix values to 0 and turns off lights
 void queue_reset_queue_matrix(void) {
-  for (int floor = 0; floor < N_FLOORS_2; floor++) {
-    for (int button = 0; button < N_BUTTONS_2; button++) {
+  for (int floor = 0; floor < N_FLOORS; floor++) {
+    for (int button = 0; button < N_BUTTONS; button++) {
       queue_matrix[floor][button] = 0;
       if (((floor == 0) && (button == BUTTON_CALL_DOWN)) || //check if invalid command
-      ((floor == (N_FLOORS_2-1)) && (button == BUTTON_CALL_UP))) {
+      ((floor == (N_FLOORS-1)) && (button == BUTTON_CALL_UP))) {
         continue;
       }
       elev_set_button_lamp(button, floor, 0);
@@ -26,20 +22,20 @@ void queue_reset_queue_matrix(void) {
 
 //reset orders at floor "floor" and turns off lights
 void queue_reset_floor (int floor){
-    for (int button = 0; button < N_BUTTONS_2; button++) {
+    for (int button = 0; button < N_BUTTONS; button++) {
       queue_matrix[floor][button] = 0;
     }
     if (floor == 0) {
       elev_set_button_lamp(BUTTON_COMMAND, floor, 0);
       elev_set_button_lamp(BUTTON_CALL_UP, floor, 0);
     }
-    else if ((floor > 0) && (floor < (N_FLOORS_2 -1))) {
+    else if ((floor > 0) && (floor < (N_FLOORS -1))) {
       elev_set_button_lamp(BUTTON_COMMAND, floor, 0);
       elev_set_button_lamp(BUTTON_CALL_UP, floor, 0);
       elev_set_button_lamp(BUTTON_CALL_DOWN, floor, 0);
     }
 
-    else if (floor == (N_FLOORS_2 -1)) {
+    else if (floor == (N_FLOORS -1)) {
       elev_set_button_lamp(BUTTON_COMMAND, floor, 0);
       elev_set_button_lamp(BUTTON_CALL_DOWN, floor, 0);
     }
@@ -48,7 +44,7 @@ void queue_reset_floor (int floor){
 
 //set orders and turns on lights
 void queue_update_matrix(void) {
-  for (int floor = 0; floor < N_FLOORS_2; floor++) {
+  for (int floor = 0; floor < N_FLOORS; floor++) {
 
     if (floor == 0) {
 
@@ -63,8 +59,8 @@ void queue_update_matrix(void) {
       }
     }
 
-    else if ((floor > 0) && (floor < (N_FLOORS_2 -1))) {
-      for (int button = 0; button < N_BUTTONS_2; button++) {
+    else if ((floor > 0) && (floor < (N_FLOORS -1))) {
+      for (int button = 0; button < N_BUTTONS; button++) {
         if (elev_get_button_signal(button, floor)) {
           queue_matrix[floor][button] = 1;
           elev_set_button_lamp(button, floor, 1);
@@ -72,7 +68,7 @@ void queue_update_matrix(void) {
       }
     }
 
-    else if (floor == (N_FLOORS_2 -1)) {
+    else if (floor == (N_FLOORS -1)) {
       if (elev_get_button_signal(BUTTON_COMMAND, floor)) {
         queue_matrix[floor][BUTTON_COMMAND] = 1;
         elev_set_button_lamp(BUTTON_COMMAND, floor, 1);
@@ -89,7 +85,7 @@ void queue_update_matrix(void) {
 
 //checks if floor sensor matches BUTTON_COMMAND orders in queue_matrix. floor is floor_sensor
 bool queue_cab_right_floor(int floor) {
-  return( queue_matrix[floor][N_BUTTONS_2 - 1] == 1 ) ;
+  return( queue_matrix[floor][N_BUTTONS - 1] == 1 ) ;
 }
 
 //checks if BUTTON_CALL_UP OR BUTTON_CALL_DOWN at floor in queue_matrix matches current direction. floor is floor_sensor
@@ -100,8 +96,8 @@ bool queue_right_direction(int floor, int current_dir) {
 
 //checks if elevator should stop if current direction does not equel order direction
 bool queue_wrong_direction_stop (int floor, int current_dir){
-    return( ((current_dir == DIRN_DOWN) && (queue_matrix[floor][BUTTON_CALL_UP] == 1) && (queue_order_below(floor) == false)) ||
-    ((current_dir == DIRN_UP) && (queue_matrix[floor][BUTTON_CALL_DOWN] == 1) && (queue_order_above(floor) == false)) );
+    return( ((current_dir != DIRN_UP) && (queue_matrix[floor][BUTTON_CALL_UP] == 1) && (queue_order_below(floor) == false)) ||
+    ((current_dir != DIRN_DOWN) && (queue_matrix[floor][BUTTON_CALL_DOWN] == 1) && (queue_order_above(floor) == false)) );
 }
 
 //returns true if elevator should stop. floor is floor_sensor
@@ -113,9 +109,9 @@ bool queue_should_elevator_stop(int floor, int current_dir) {
 
 //returns true if there is order above elevator
 bool queue_order_above (int floor) {
-  if (floor < N_FLOORS_2 -1) {
-    for (int f = floor + 1; f < N_FLOORS_2 ; f ++) {
-      for (int button = 0; button < N_BUTTONS_2; button ++){
+  if (floor < N_FLOORS -1) {
+    for (int f = floor + 1; f < N_FLOORS ; f ++) {
+      for (int button = 0; button < N_BUTTONS; button ++){
         if (queue_matrix[f][button] == 1) {
           return true;
         }
@@ -129,7 +125,7 @@ bool queue_order_above (int floor) {
 bool queue_order_below(int floor) {
   if (floor > 0) {
     for (int f = floor - 1; f >= 0 ; f --) {
-      for (int button = 0; button < N_BUTTONS_2; button ++){
+      for (int button = 0; button < N_BUTTONS; button ++){
         if (queue_matrix[f][button] == 1) {
           return true;
         }
@@ -140,7 +136,7 @@ bool queue_order_below(int floor) {
 }
 
 bool queue_order_same_floor(int floor) {
-  for (int button = 0; button < N_BUTTONS_2; button ++){
+  for (int button = 0; button < N_BUTTONS; button ++){
     if (queue_matrix[floor][button] == 1) {
       return true;
     }

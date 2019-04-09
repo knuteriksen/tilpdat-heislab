@@ -1,9 +1,3 @@
-#include "channels.h"
-#include "elev.h"
-//#include "io.h"
-#include "timer.h"
-#include "queue.h"
-
 /**
 * @file
 * @brief Contains functions to be called if certain events are triggered

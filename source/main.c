@@ -1,10 +1,9 @@
 #include <stdio.h>
 
 #include "stateMachine.h"
-//#include "elev.h"
-//#include "queue.h"
-//#include "timer.h"
-//#include "io.h"
+#include "queue.h"
+#include "timer.h"
+#include "elev.h"
 
 
 int main() {
@@ -13,8 +12,6 @@ int main() {
         printf("Unable to initialize elevator hardware!\n");
         return 1;
     }
-
-    //printf("Press STOP button to stop elevator and exit program.\n");
 
     state_init(); //state is now in IDLE
     int c_floor = state_get_current_floor();
