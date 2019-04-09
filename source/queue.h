@@ -3,20 +3,52 @@
 #include "elev.h"
 
 
+/**
+* @file
+* @brief functions and operations on the queue matrix
+*/
+
+
 #define N_BUTTONS_2 3
 #define N_FLOORS_2 4
 
-void queue_reset_queue_matrix(void);   //reset all values of queue matrix to 0 and turns off light
 
-void queue_reset_floor (int floor); //reset orders at floor "floor" and turns off light
+/**
+* @brief Set all values of queue matrix to 0 and turn off all lights
+* @param void.
+*/
+void queue_reset_queue_matrix(void);
 
-void queue_update_matrix(void); // set orders and turns on light
+/**
+* @brief Set orders at floor @p floor and turns off light at @p floor
+* @param[in] floor .
+*/
+void queue_reset_floor (int floor);
 
-void queue_print_que_matrix(); //prints the queue_matrix
 
-bool queue_cab_right_floor(int floor); //checks if floor sensor matches elevator orders in queue_matrix. floor is floor_sensor
+/**
+* @brief Iterates through all buttons and checks if any is pushed.
+*If any buttons is pushed the corresponding slot in queue matrix is set to 1
+*and corresponding lights are turned on.
+* @param void .
+*/
+void queue_update_matrix(void);
 
-bool queue_right_direction (int floor, int current_dir);  //checks if order direction in queue_matrix matches current direction floor is floor_sensor
+/**
+* @brief Checks if @p floor matches elevator cab orders in queue matrix.
+* @param[in] floor .
+* @return @c true on success, else @c false
+*/
+bool queue_cab_right_floor(int floor);
+
+
+/**
+* @brief Checks if there is a order at @p floor that matches @p current_dir
+*of elevator
+* @param[in] floor .
+* @return @c true on success, else @c false
+*/
+bool queue_right_direction (int floor, int current_dir);
 
 bool queue_wrong_direction_stop (int floor, int current_dir); //checks if elevator should stop if current direction does not equel order direction
 

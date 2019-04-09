@@ -18,15 +18,15 @@ int main() {
     //printf("Press STOP button to stop elevator and exit program.\n");
 
     state_init(); //state is now in IDLE
-    int c_floor = get_current_floor();
-    int c_direction = get_current_direction();
+    int c_floor = state_get_current_floor();
+    int c_direction = state_get_current_direction();
 
     while (1) {
 
       queue_update_matrix ();
       state_update_current_floor();
-      c_floor = get_current_floor();
-      c_direction = get_current_direction();
+      c_floor = state_get_current_floor();
+      c_direction = state_get_current_direction();
 
       if (elev_get_floor_sensor_signal() != -1)
         elev_set_floor_indicator(c_floor);
@@ -45,7 +45,7 @@ int main() {
         state_emergency_stop_button_released();
       }
 
-      if (!queue_matrix_empty(get_current_floor())) {
+      if (!queue_matrix_empty(state_get_current_floor())) {
         state_execute_new_order();
       }
 

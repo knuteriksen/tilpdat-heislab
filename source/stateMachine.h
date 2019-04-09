@@ -22,6 +22,6 @@ void state_emergency_stop_button_released (void); //if emergency stop button is 
 
 void state_execute_new_order (void); //executes new order if there is any
 
-int get_current_floor(void);
+int state_get_current_floor(void);
 
-int get_current_direction(void);
+int state_get_current_direction(void);

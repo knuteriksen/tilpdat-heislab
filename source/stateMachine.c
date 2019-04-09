@@ -10,7 +10,7 @@ int between_floors; // -1 if under current floor, 1 if above current floor, 0 el
 
 static elev_state state;
 
-int get_current_floor(void) {
+int state_get_current_floor(void) {
   return current_floor;
 }
 
@@ -48,7 +48,8 @@ void state_init (void){
 void state_open_door (void) {
 
   elev_set_door_open_lamp(1); //opens door
-  start_timer();               //starts timer
+  start_timer(); //starts timer
+  current_floor = elev_get_floor_sensor_signal();
   queue_reset_floor(current_floor);  //resets orders at current floor and turns off lights at current floor
 
 
@@ -174,6 +175,6 @@ void state_execute_new_order (void) {
   }
 }
 
-int get_current_direction(void) {
+int state_get_current_direction(void) {
   return current_direction;
 }

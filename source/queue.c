@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-
+//test
 //create queue matrix
 int queue_matrix [N_FLOORS_2][N_BUTTONS_2] = {} ;
 
@@ -85,16 +85,6 @@ void queue_update_matrix(void) {
   }
 }
 
-
-//prints the queue_matrix
-void queue_print_que_matrix() {
-  for (int floor = 0; floor < N_FLOORS_2; floor++) {
-    for (int button = 0; button < N_BUTTONS_2 ; button ++) {
-      printf("%d  ", queue_matrix[floor][button] );
-    }
-    printf("\n");
-  }
-}
 
 //checks if floor sensor matches BUTTON_COMMAND orders in queue_matrix. floor is floor_sensor
 bool queue_cab_right_floor(int floor) {
