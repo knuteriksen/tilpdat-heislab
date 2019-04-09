@@ -171,9 +171,7 @@ int queue_choose_direction (int floor, int between_floors, int current_dir) {
       return DIRN_DOWN;
     }
   }
-  else {
-    return DIRN_STOP;
-  }
+  return DIRN_STOP;
 }
 
 bool queue_matrix_empty(int current_floor) {

@@ -34,7 +34,7 @@ int main() {
         state_open_door();
       }
 
-      if (time_is_up()) {
+      if (timer_time_is_up()) {
         state_close_door();
       }
 
