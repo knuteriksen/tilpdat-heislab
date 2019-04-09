@@ -15,73 +15,38 @@ void queue_reset_queue_matrix(void) {
       ((floor == (N_FLOORS-1)) && (button == BUTTON_CALL_UP))) {
         continue;
       }
-      elev_set_button_lamp(button, floor, 0);
+        elev_set_button_lamp(button, floor, 0);
     }
   }
 }
 
 //reset orders at floor "floor" and turns off lights
 void queue_reset_floor (int floor){
-    for (int button = 0; button < N_BUTTONS; button++) {
-      queue_matrix[floor][button] = 0;
+  for (int button = 0; button < N_BUTTONS; button++) {
+    if (((floor == 0) && (button == BUTTON_CALL_DOWN)) || //check if invalid command
+    ((floor == (N_FLOORS-1)) && (button == BUTTON_CALL_UP))) {
+      continue;
     }
-    if (floor == 0) {
-      elev_set_button_lamp(BUTTON_COMMAND, floor, 0);
-      elev_set_button_lamp(BUTTON_CALL_UP, floor, 0);
-    }
-    else if ((floor > 0) && (floor < (N_FLOORS -1))) {
-      elev_set_button_lamp(BUTTON_COMMAND, floor, 0);
-      elev_set_button_lamp(BUTTON_CALL_UP, floor, 0);
-      elev_set_button_lamp(BUTTON_CALL_DOWN, floor, 0);
-    }
-
-    else if (floor == (N_FLOORS -1)) {
-      elev_set_button_lamp(BUTTON_COMMAND, floor, 0);
-      elev_set_button_lamp(BUTTON_CALL_DOWN, floor, 0);
-    }
-
+    elev_set_button_lamp(button,floor,0);
+    queue_matrix[floor][button] = 0;
+  }
 }
 
 //set orders and turns on lights
 void queue_update_matrix(void) {
   for (int floor = 0; floor < N_FLOORS; floor++) {
-
-    if (floor == 0) {
-
-      if (elev_get_button_signal(BUTTON_COMMAND, floor)) {
-        queue_matrix[floor][BUTTON_COMMAND] = 1;
-        elev_set_button_lamp(BUTTON_COMMAND, floor, 1);
+    for (int button = 0; button < N_BUTTONS; button++) {
+      if (((floor == 0) && (button == BUTTON_CALL_DOWN)) || //check if invalid command
+      ((floor == (N_FLOORS-1)) && (button == BUTTON_CALL_UP))) {
+        continue;
       }
-
-      if (elev_get_button_signal(BUTTON_CALL_UP, floor)) {
-        queue_matrix[floor][BUTTON_CALL_UP] = 1;
-        elev_set_button_lamp(BUTTON_CALL_UP, floor, 1);
-      }
-    }
-
-    else if ((floor > 0) && (floor < (N_FLOORS -1))) {
-      for (int button = 0; button < N_BUTTONS; button++) {
-        if (elev_get_button_signal(button, floor)) {
-          queue_matrix[floor][button] = 1;
-          elev_set_button_lamp(button, floor, 1);
-        }
-      }
-    }
-
-    else if (floor == (N_FLOORS -1)) {
-      if (elev_get_button_signal(BUTTON_COMMAND, floor)) {
-        queue_matrix[floor][BUTTON_COMMAND] = 1;
-        elev_set_button_lamp(BUTTON_COMMAND, floor, 1);
-      }
-
-      if (elev_get_button_signal(BUTTON_CALL_DOWN, floor)) {
-        queue_matrix[floor][BUTTON_CALL_DOWN] = 1;
-        elev_set_button_lamp(BUTTON_CALL_DOWN, floor, 1);
+      if (elev_get_button_signal(button, floor)) {
+        queue_matrix[floor][button] = 1;
+        elev_set_button_lamp(button, floor, 1);
       }
     }
   }
 }
-
 
 //checks if floor sensor matches BUTTON_COMMAND orders in queue_matrix. floor is floor_sensor
 bool queue_cab_right_floor(int floor) {
@@ -90,8 +55,8 @@ bool queue_cab_right_floor(int floor) {
 
 //checks if BUTTON_CALL_UP OR BUTTON_CALL_DOWN at floor in queue_matrix matches current direction. floor is floor_sensor
 bool queue_right_direction(int floor, int current_dir) {
-  return( ((queue_matrix[floor][BUTTON_CALL_UP] == 1) && (current_dir == 1)) ||
-  ((queue_matrix[floor][BUTTON_CALL_DOWN] == 1) && (current_dir == -1)) );
+  return( ((queue_matrix[floor][BUTTON_CALL_UP] == 1) && (current_dir == DIRN_UP)) ||
+  ((queue_matrix[floor][BUTTON_CALL_DOWN] == 1) && (current_dir == DIRN_DOWN)) );
 }
 
 //checks if elevator should stop if current direction does not equel order direction
@@ -102,10 +67,9 @@ bool queue_wrong_direction_stop (int floor, int current_dir){
 
 //returns true if elevator should stop. floor is floor_sensor
 bool queue_should_elevator_stop(int floor, int current_dir) {
-  bool ret_value = ( queue_cab_right_floor(floor) ||
-  queue_right_direction(floor, current_dir) ||
-  queue_wrong_direction_stop(floor, current_dir) );
-  return ret_value;
+  return (queue_right_direction(floor, current_dir) ||
+  queue_wrong_direction_stop(floor, current_dir) ||
+  queue_cab_right_floor(floor));
 }
 
 //returns true if there is order above elevator

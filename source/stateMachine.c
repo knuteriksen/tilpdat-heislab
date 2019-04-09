@@ -18,7 +18,7 @@ int state_get_current_floor(void) {
 }
 
 void state_update_current_floor(void) {
-  if (elev_get_floor_sensor_signal() != -1) {
+  if (elev_get_floor_sensor_signal() >= 0) {
     current_floor = elev_get_floor_sensor_signal();
     if (current_direction == DIRN_DOWN) {
       between_floors = -1;
@@ -47,12 +47,12 @@ void state_init (void){
 }
 
 void state_open_door (void) {
-
+  elev_set_motor_direction(DIRN_STOP);
   elev_set_door_open_lamp(1); //opens door
   timer_start_timer(); //starts timer
-  current_floor = elev_get_floor_sensor_signal();  //find out if this is necesary
+  state_update_current_floor();  //find out if this is necesary
   queue_reset_floor(current_floor);  //resets orders at current floor and turns off lights at current floor
-  elev_set_motor_direction(DIRN_STOP);
+
   state = DOOR_OPEN;
 }
 
@@ -66,16 +66,22 @@ void state_emergency_stop_button_pushed (void) {
 
   elev_set_motor_direction (DIRN_STOP); //stops elevator
   queue_reset_queue_matrix(); //resets all orders and turns of all lights
-  elev_set_door_open_lamp (0); //closes door
+  if (elev_get_floor_sensor_signal() != -1) {
+    elev_set_door_open_lamp(1); //opens door if elevator is at floor
+  }
   elev_set_stop_lamp (1); // turns on emergency stop lamp
   state = EMERGENCY_STOP;
 }
 
 
 void state_emergency_stop_button_released (void) {
-
-  elev_set_stop_lamp(0);  //tursn of stop light
-  state = IDLE;
+  elev_set_stop_lamp(0);  //turns of stop light
+  if (elev_get_floor_sensor_signal() != -1) {
+    state_open_door();
+  }
+  else {
+    state = IDLE;
+  }
 }
 
 void state_execute_new_order (void) {

@@ -34,6 +34,7 @@ int main() {
         state_emergency_stop_button_pushed();
         while (elev_get_stop_signal());
         state_emergency_stop_button_released();
+
       }
 
       if (!queue_matrix_empty(state_get_current_floor())) {
