@@ -1,0 +1,246 @@
+\hypertarget{stateMachine_8h}{}\section{source/state\+Machine.h File Reference}
+\label{stateMachine_8h}\index{source/state\+Machine.\+h@{source/state\+Machine.\+h}}
+
+
+Contains functions to be called if certain events are triggered.  
+
+
+{\ttfamily \#include \char`\"{}channels.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}elev.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\\*
+Include dependency graph for state\+Machine.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum state {\bfseries elev\+\_\+state}\hypertarget{stateMachine_8h_ad5f6772446f43f4743a9ad2e04bed5d8}{}\label{stateMachine_8h_ad5f6772446f43f4743a9ad2e04bed5d8}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries state} \{ {\bfseries I\+D\+LE}, 
+{\bfseries M\+O\+V\+I\+NG}, 
+{\bfseries D\+O\+O\+R\+\_\+\+O\+P\+EN}, 
+{\bfseries E\+M\+E\+R\+G\+E\+N\+C\+Y\+\_\+\+S\+T\+OP}
+ \}\hypertarget{stateMachine_8h_adc6e5733fc3c22f0a7b2914188c49c90}{}\label{stateMachine_8h_adc6e5733fc3c22f0a7b2914188c49c90}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{stateMachine_8h_a5e1c04e1bffdfacfecc570831b6b0fb0}{state\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Initialize elevator\+: Move eleavtor to well defined state. Reset queue matrix. Update current floor and set floor indicator. Switch state to {\ttfamily I\+D\+LE}. \end{DoxyCompactList}\item 
+void \hyperlink{stateMachine_8h_aac1184c02d041c2375e5d2829fc6e6e2}{state\+\_\+update\+\_\+current\+\_\+floor} (void)
+\begin{DoxyCompactList}\small\item\em Updates current floor if floor sensor is triggered. Updates {\ttfamily beetween\+\_\+floors} depending on {\ttfamily current\+\_\+direction}. \end{DoxyCompactList}\item 
+void \hyperlink{stateMachine_8h_a682da146d6ebb7b42152495873617b52}{state\+\_\+open\+\_\+door} (void)
+\begin{DoxyCompactList}\small\item\em Opens door, sets all orders at {\ttfamily current\+\_\+floor} to 0 and stops elevator if necessary. Switches state to {\ttfamily D\+O\+O\+R\+\_\+\+O\+P\+EN}. \end{DoxyCompactList}\item 
+void \hyperlink{stateMachine_8h_a412723cc329a9d64dfa24243f603dc72}{state\+\_\+close\+\_\+door} (void)
+\begin{DoxyCompactList}\small\item\em Closes door and switches state to {\ttfamily I\+D\+LE}. \end{DoxyCompactList}\item 
+void \hyperlink{stateMachine_8h_a381d8559ad6aa847336b38827d04e090}{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+pushed} (void)
+\begin{DoxyCompactList}\small\item\em Stops elevator, set all orders in matrix to 0, close door and turn on emergency stop button lamp. Switches state to {\ttfamily E\+M\+E\+R\+G\+E\+N\+C\+Y\+\_\+\+S\+T\+OP}. \end{DoxyCompactList}\item 
+void \hyperlink{stateMachine_8h_a75883ea8b7955430652bdd3707f3e120}{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+released} (void)
+\begin{DoxyCompactList}\small\item\em Turns off emergency stop button lamp and switches state to {\ttfamily I\+D\+LE}. \end{DoxyCompactList}\item 
+void \hyperlink{stateMachine_8h_add72e0dfb50212434ea4edf5895542e9}{state\+\_\+execute\+\_\+new\+\_\+order} (void)
+\begin{DoxyCompactList}\small\item\em Calculates {\ttfamily current\+\_\+direction} and set motor direction to {\ttfamily current\+\_\+direction}. Switches state to {\ttfamily M\+O\+V\+I\+NG} if elevator should move, or {\ttfamily D\+O\+O\+R\+\_\+\+O\+P\+EN} if elevator should open door. \end{DoxyCompactList}\item 
+int \hyperlink{stateMachine_8h_ae8ba2b13f8593e4c24a8f8278b784f88}{state\+\_\+get\+\_\+current\+\_\+floor} (void)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily current\+\_\+floor}. \end{DoxyCompactList}\item 
+int \hyperlink{stateMachine_8h_a0ba62ba30b97b2cd2f40477dcabb863a}{state\+\_\+get\+\_\+current\+\_\+direction} (void)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily current\+\_\+direction}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains functions to be called if certain events are triggered. 
+
+
+
+\subsection{Function Documentation}
+\index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+close\+\_\+door@{state\+\_\+close\+\_\+door}}
+\index{state\+\_\+close\+\_\+door@{state\+\_\+close\+\_\+door}!state\+Machine.\+h@{state\+Machine.\+h}}
+\subsubsection[{\texorpdfstring{state\+\_\+close\+\_\+door(void)}{state_close_door(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void state\+\_\+close\+\_\+door (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{stateMachine_8h_a412723cc329a9d64dfa24243f603dc72}{}\label{stateMachine_8h_a412723cc329a9d64dfa24243f603dc72}
+
+
+Closes door and switches state to {\ttfamily I\+D\+LE}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void.} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 78 of file state\+Machine.\+c.
+
+\index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+pushed@{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+pushed}}
+\index{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+pushed@{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+pushed}!state\+Machine.\+h@{state\+Machine.\+h}}
+\subsubsection[{\texorpdfstring{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+pushed(void)}{state_emergency_stop_button_pushed(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+pushed (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{stateMachine_8h_a381d8559ad6aa847336b38827d04e090}{}\label{stateMachine_8h_a381d8559ad6aa847336b38827d04e090}
+
+
+Stops elevator, set all orders in matrix to 0, close door and turn on emergency stop button lamp. Switches state to {\ttfamily E\+M\+E\+R\+G\+E\+N\+C\+Y\+\_\+\+S\+T\+OP}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void.} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 102 of file state\+Machine.\+c.
+
+\index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+released@{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+released}}
+\index{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+released@{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+released}!state\+Machine.\+h@{state\+Machine.\+h}}
+\subsubsection[{\texorpdfstring{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+released(void)}{state_emergency_stop_button_released(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+released (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{stateMachine_8h_a75883ea8b7955430652bdd3707f3e120}{}\label{stateMachine_8h_a75883ea8b7955430652bdd3707f3e120}
+
+
+Turns off emergency stop button lamp and switches state to {\ttfamily I\+D\+LE}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void.} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 129 of file state\+Machine.\+c.
+
+\index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+execute\+\_\+new\+\_\+order@{state\+\_\+execute\+\_\+new\+\_\+order}}
+\index{state\+\_\+execute\+\_\+new\+\_\+order@{state\+\_\+execute\+\_\+new\+\_\+order}!state\+Machine.\+h@{state\+Machine.\+h}}
+\subsubsection[{\texorpdfstring{state\+\_\+execute\+\_\+new\+\_\+order(void)}{state_execute_new_order(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void state\+\_\+execute\+\_\+new\+\_\+order (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{stateMachine_8h_add72e0dfb50212434ea4edf5895542e9}{}\label{stateMachine_8h_add72e0dfb50212434ea4edf5895542e9}
+
+
+Calculates {\ttfamily current\+\_\+direction} and set motor direction to {\ttfamily current\+\_\+direction}. Switches state to {\ttfamily M\+O\+V\+I\+NG} if elevator should move, or {\ttfamily D\+O\+O\+R\+\_\+\+O\+P\+EN} if elevator should open door. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void.} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 153 of file state\+Machine.\+c.
+
+\index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+get\+\_\+current\+\_\+direction@{state\+\_\+get\+\_\+current\+\_\+direction}}
+\index{state\+\_\+get\+\_\+current\+\_\+direction@{state\+\_\+get\+\_\+current\+\_\+direction}!state\+Machine.\+h@{state\+Machine.\+h}}
+\subsubsection[{\texorpdfstring{state\+\_\+get\+\_\+current\+\_\+direction(void)}{state_get_current_direction(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int state\+\_\+get\+\_\+current\+\_\+direction (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{stateMachine_8h_a0ba62ba30b97b2cd2f40477dcabb863a}{}\label{stateMachine_8h_a0ba62ba30b97b2cd2f40477dcabb863a}
+
+
+Returns {\ttfamily current\+\_\+direction}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily current\+\_\+direction} 
+\end{DoxyReturn}
+
+
+Definition at line 178 of file state\+Machine.\+c.
+
+\index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+get\+\_\+current\+\_\+floor@{state\+\_\+get\+\_\+current\+\_\+floor}}
+\index{state\+\_\+get\+\_\+current\+\_\+floor@{state\+\_\+get\+\_\+current\+\_\+floor}!state\+Machine.\+h@{state\+Machine.\+h}}
+\subsubsection[{\texorpdfstring{state\+\_\+get\+\_\+current\+\_\+floor(void)}{state_get_current_floor(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int state\+\_\+get\+\_\+current\+\_\+floor (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{stateMachine_8h_ae8ba2b13f8593e4c24a8f8278b784f88}{}\label{stateMachine_8h_ae8ba2b13f8593e4c24a8f8278b784f88}
+
+
+Returns {\ttfamily current\+\_\+floor}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily current\+\_\+floor} 
+\end{DoxyReturn}
+
+
+Definition at line 13 of file state\+Machine.\+c.
+
+\index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+init@{state\+\_\+init}}
+\index{state\+\_\+init@{state\+\_\+init}!state\+Machine.\+h@{state\+Machine.\+h}}
+\subsubsection[{\texorpdfstring{state\+\_\+init(void)}{state_init(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void state\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{stateMachine_8h_a5e1c04e1bffdfacfecc570831b6b0fb0}{}\label{stateMachine_8h_a5e1c04e1bffdfacfecc570831b6b0fb0}
+
+
+Initialize elevator\+: Move eleavtor to well defined state. Reset queue matrix. Update current floor and set floor indicator. Switch state to {\ttfamily I\+D\+LE}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void.} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 34 of file state\+Machine.\+c.
+
+\index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+open\+\_\+door@{state\+\_\+open\+\_\+door}}
+\index{state\+\_\+open\+\_\+door@{state\+\_\+open\+\_\+door}!state\+Machine.\+h@{state\+Machine.\+h}}
+\subsubsection[{\texorpdfstring{state\+\_\+open\+\_\+door(void)}{state_open_door(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void state\+\_\+open\+\_\+door (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{stateMachine_8h_a682da146d6ebb7b42152495873617b52}{}\label{stateMachine_8h_a682da146d6ebb7b42152495873617b52}
+
+
+Opens door, sets all orders at {\ttfamily current\+\_\+floor} to 0 and stops elevator if necessary. Switches state to {\ttfamily D\+O\+O\+R\+\_\+\+O\+P\+EN}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void.} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 48 of file state\+Machine.\+c.
+
+\index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+update\+\_\+current\+\_\+floor@{state\+\_\+update\+\_\+current\+\_\+floor}}
+\index{state\+\_\+update\+\_\+current\+\_\+floor@{state\+\_\+update\+\_\+current\+\_\+floor}!state\+Machine.\+h@{state\+Machine.\+h}}
+\subsubsection[{\texorpdfstring{state\+\_\+update\+\_\+current\+\_\+floor(void)}{state_update_current_floor(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void state\+\_\+update\+\_\+current\+\_\+floor (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{stateMachine_8h_aac1184c02d041c2375e5d2829fc6e6e2}{}\label{stateMachine_8h_aac1184c02d041c2375e5d2829fc6e6e2}
+
+
+Updates current floor if floor sensor is triggered. Updates {\ttfamily beetween\+\_\+floors} depending on {\ttfamily current\+\_\+direction}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void.} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 17 of file state\+Machine.\+c.
+

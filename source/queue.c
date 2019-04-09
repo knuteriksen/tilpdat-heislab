@@ -1,11 +1,12 @@
-#include "queue.h"
-#include "elev.h"
-#include "io.h"
-#include "channels.h"
-
 #include <stdio.h>
 
-//test
+#include "queue.h"
+
+//#include "elev.h"
+//#include "io.h"
+//#include "channels.h"
+
+
 //create queue matrix
 int queue_matrix [N_FLOORS_2][N_BUTTONS_2] = {} ;
 
@@ -147,15 +148,28 @@ bool queue_order_same_floor(int floor) {
   return false;
 }
 
-//calculates next direction of elevator when elevator is stopped.
-int queue_choose_direction (int floor, int between_floors) {
-  if (queue_order_above(floor) ||
-  (queue_order_same_floor(floor) && (between_floors == -1))) {
-    return DIRN_UP;
+//calculates next direction of elevator
+int queue_choose_direction (int floor, int between_floors, int current_dir) {
+  if (current_dir != DIRN_UP) {
+    if (queue_order_below(floor) ||
+    (queue_order_same_floor(floor) && (between_floors == 1))){
+      return DIRN_DOWN;
+    }
+    else if (queue_order_above(floor) ||
+    (queue_order_same_floor(floor) && (between_floors == -1))) {
+      return DIRN_UP;
+    }
   }
-  else if (queue_order_below(floor) ||
-  (queue_order_same_floor(floor) && (between_floors == 1))){
-    return DIRN_DOWN;
+
+  else if (current_dir != DIRN_DOWN) {
+    if (queue_order_above(floor) ||
+    (queue_order_same_floor(floor) && (between_floors == -1))) {
+      return DIRN_UP;
+    }
+    else if (queue_order_below(floor) ||
+    (queue_order_same_floor(floor) && (between_floors == 1))){
+      return DIRN_DOWN;
+    }
   }
   else {
     return DIRN_STOP;

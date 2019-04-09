@@ -1,11 +1,10 @@
 #include <stdio.h>
 
-
-#include "elev.h"
 #include "stateMachine.h"
-#include "queue.h"
-#include "timer.h"
-#include "io.h"
+//#include "elev.h"
+//#include "queue.h"
+//#include "timer.h"
+//#include "io.h"
 
 
 int main() {

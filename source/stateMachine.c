@@ -48,8 +48,8 @@ void state_init (void){
 void state_open_door (void) {
 
   elev_set_door_open_lamp(1); //opens door
-  start_timer(); //starts timer
-  current_floor = elev_get_floor_sensor_signal();
+  timer_start_timer(); //starts timer
+  current_floor = elev_get_floor_sensor_signal();  //find out if this is necesary
   queue_reset_floor(current_floor);  //resets orders at current floor and turns off lights at current floor
 
 
@@ -155,7 +155,7 @@ void state_execute_new_order (void) {
   switch (state) {
 
     case (IDLE):
-      current_direction = queue_choose_direction(current_floor, between_floors);
+      current_direction = queue_choose_direction(current_floor, between_floors, current_direction);
       elev_set_motor_direction (current_direction); //sets motor direction to new calculated direction;
 
       state = MOVING;
