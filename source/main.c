@@ -14,20 +14,15 @@ int main() {
     }
 
     state_init(); //state is now in IDLE
-    int c_floor = state_get_current_floor();
-    int c_direction = state_get_current_direction();
 
     while (1) {
-
       queue_update_matrix ();
       state_update_current_floor();
-      c_floor = state_get_current_floor();
-      c_direction = state_get_current_direction();
 
       if (elev_get_floor_sensor_signal() != -1)
-        elev_set_floor_indicator(c_floor);
+        elev_set_floor_indicator(state_get_current_floor());
 
-      if (queue_should_elevator_stop(elev_get_floor_sensor_signal(), c_direction)) {
+      if (queue_should_elevator_stop(elev_get_floor_sensor_signal(), state_get_current_direction())) {
         state_open_door();
       }
 

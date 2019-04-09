@@ -102,9 +102,10 @@ bool queue_wrong_direction_stop (int floor, int current_dir){
 
 //returns true if elevator should stop. floor is floor_sensor
 bool queue_should_elevator_stop(int floor, int current_dir) {
-  return( queue_cab_right_floor(floor) ||
+  bool ret_value = ( queue_cab_right_floor(floor) ||
   queue_right_direction(floor, current_dir) ||
   queue_wrong_direction_stop(floor, current_dir) );
+  return ret_value;
 }
 
 //returns true if there is order above elevator
