@@ -6,6 +6,46 @@
 //create queue matrix
 int queue_matrix [N_FLOORS][N_BUTTONS] = {} ;
 
+
+//returns true if there is order above elevator
+bool queue_order_above (int floor) {
+  if (floor < N_FLOORS -1) {
+    for (int f = floor + 1; f < N_FLOORS ; f ++) {
+      for (int button = 0; button < N_BUTTONS; button ++){
+        if (queue_matrix[f][button] == 1) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
+bool queue_order_same_floor(int floor);
+//returns true if there is order below elevator
+bool queue_order_below(int floor) {
+  if (floor > 0) {
+    for (int f = floor - 1; f >= 0 ; f --) {
+      for (int button = 0; button < N_BUTTONS; button ++){
+        if (queue_matrix[f][button] == 1) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
+bool queue_order_same_floor(int floor) {
+  for (int button = 0; button < N_BUTTONS; button ++){
+    if (queue_matrix[floor][button] == 1) {
+      return true;
+    }
+  }
+  return false;
+}
+
+
  //sets all values to 0 and turns off lights
 void queue_reset_queue_matrix(void) {
   for (int floor = 0; floor < N_FLOORS; floor++) {
@@ -72,42 +112,6 @@ bool queue_should_elevator_stop(int floor, int current_dir) {
   queue_cab_right_floor(floor));
 }
 
-//returns true if there is order above elevator
-bool queue_order_above (int floor) {
-  if (floor < N_FLOORS -1) {
-    for (int f = floor + 1; f < N_FLOORS ; f ++) {
-      for (int button = 0; button < N_BUTTONS; button ++){
-        if (queue_matrix[f][button] == 1) {
-          return true;
-        }
-      }
-    }
-  }
-  return false;
-}
-
-//returns true if there is order below elevator
-bool queue_order_below(int floor) {
-  if (floor > 0) {
-    for (int f = floor - 1; f >= 0 ; f --) {
-      for (int button = 0; button < N_BUTTONS; button ++){
-        if (queue_matrix[f][button] == 1) {
-          return true;
-        }
-      }
-    }
-  }
-  return false;
-}
-
-bool queue_order_same_floor(int floor) {
-  for (int button = 0; button < N_BUTTONS; button ++){
-    if (queue_matrix[floor][button] == 1) {
-      return true;
-    }
-  }
-  return false;
-}
 
 //calculates next direction of elevator
 int queue_choose_direction (int floor, int between_floors, int current_dir) {
