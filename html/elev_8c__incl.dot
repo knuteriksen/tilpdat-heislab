@@ -1,0 +1,16 @@
+digraph "source/elev.c"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="source/elev.c",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="channels.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$channels_8h.html",tooltip="Channel definitions for elevator control using LibComedi. 2006, Martin Korsgaard. ..."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="elev.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$elev_8h.html",tooltip="Wrapper for libComedi Elevator control. These functions provides an interface to the elevators in the..."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="io.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$io_8h.html",tooltip="Wrapper for libComedi I/O.These functions provide and interface to libComedi limited to use in the re..."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="assert.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="stdlib.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

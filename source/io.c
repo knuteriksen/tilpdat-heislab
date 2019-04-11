@@ -1,8 +1,11 @@
-// Wrapper for libComedi I/O.
-// These functions provide and interface to libComedi limited to use in
-// the real time lab.
-//
-// 2006, Martin Korsgaard
+/**
+* @file
+* @brief Wrapper for libComedi I/O.
+* These functions provide and interface to libComedi limited to use in the real time lab.
+* 2006, Martin Korsgaard
+*/
+
+
 
 
 #include "io.h"

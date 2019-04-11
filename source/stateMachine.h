@@ -4,6 +4,9 @@
 */
 
 
+/**
+* @brief Enum containing the different states
+*/
 typedef enum state {IDLE, MOVING, DOOR_OPEN, EMERGENCY_STOP} elev_state;
 
 /**

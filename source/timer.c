@@ -1,3 +1,7 @@
+/**
+* @file
+*/
+
 #include "timer.h"
 
 static time_t start_time;

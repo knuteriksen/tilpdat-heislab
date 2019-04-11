@@ -8,7 +8,7 @@
 
 
 /**
-* @brief Set all values of queue matrix to 0 and turn off all lights
+* @brief Set all values of queue matrix to 0 and turns off all lights
 * @param void.
 */
 void queue_reset_queue_matrix(void);
@@ -48,7 +48,7 @@ void queue_update_matrix(void);
 
 
 /**
-* @brief  //Checks if there is an order in opposite direction that should be
+* @brief Checks if there is an order in opposite direction that should be
 * executed
 * @param[in] floor .
 * @param [in] current_dir .
@@ -58,42 +58,42 @@ void queue_update_matrix(void);
 
 
 /**
-* @brief  //Checks if elevator should stop.
+* @brief Checks if elevator should stop.
 * @param[in] floor .
 * @param [in] current_dir .
 * @return @c true on success, else @c false
 */
 bool queue_should_elevator_stop (int floor, int current_dir);
 /**
-* @brief  //Checks if there is any orders above @p floor.
+* @brief Checks if there is any orders above @p floor.
 * @param[in] floor .
 * @return @c true on success, else @c false
 */
 //bool queue_order_above (int floor);
 
 /**
-* @brief  //Checks if there is any orders below @p floor.
+* @brief Checks if there is any orders below @p floor.
 * @param[in] floor .
 * @return @c true on success, else @c false
 */
 //bool queue_order_below (int floor);
 
 /**
-* @brief  //Checks if there is any orders at @p floor.
+* @brief Checks if there is any orders at @p floor.
 * @param[in] floor .
 * @return @c true on success, else @c false
 */
 //bool queue_order_same_floor(int floor);
 
 /**
-* @brief  //Checks if there is no more orders in queue matrix.
+* @brief Checks if there is no more orders in queue matrix.
 * @param[in] floor .
 * @return @c true on success, else @c false
 */
 bool queue_matrix_empty(int current_floor);
 
 /**
-* @brief  //Calculates next direction of elevator
+* @brief Calculates next direction of elevator
 * @param[in] floor .
 * @param[in] between_floors .
 * @return @c true on success, else @c false

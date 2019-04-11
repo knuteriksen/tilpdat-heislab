@@ -5,29 +5,23 @@
 Contains functions to be called if certain events are triggered.  
 
 
-{\ttfamily \#include \char`\"{}channels.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}elev.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}queue.\+h\char`\"{}}\\*
-Include dependency graph for state\+Machine.\+h\+:
-% FIG 0
 This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+% FIG 0
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef enum state {\bfseries elev\+\_\+state}\hypertarget{stateMachine_8h_ad5f6772446f43f4743a9ad2e04bed5d8}{}\label{stateMachine_8h_ad5f6772446f43f4743a9ad2e04bed5d8}
+typedef enum \hyperlink{stateMachine_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \hyperlink{stateMachine_8h_ad5f6772446f43f4743a9ad2e04bed5d8}{elev\+\_\+state}\hypertarget{stateMachine_8h_ad5f6772446f43f4743a9ad2e04bed5d8}{}\label{stateMachine_8h_ad5f6772446f43f4743a9ad2e04bed5d8}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Enum containing the different states. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bfseries state} \{ {\bfseries I\+D\+LE}, 
+enum \hyperlink{stateMachine_8h_adc6e5733fc3c22f0a7b2914188c49c90}{state} \{ {\bfseries I\+D\+LE}, 
 {\bfseries M\+O\+V\+I\+NG}, 
 {\bfseries D\+O\+O\+R\+\_\+\+O\+P\+EN}, 
 {\bfseries E\+M\+E\+R\+G\+E\+N\+C\+Y\+\_\+\+S\+T\+OP}
  \}\hypertarget{stateMachine_8h_adc6e5733fc3c22f0a7b2914188c49c90}{}\label{stateMachine_8h_adc6e5733fc3c22f0a7b2914188c49c90}
-
+\begin{DoxyCompactList}\small\item\em Enum containing the different states. \end{DoxyCompactList}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -76,7 +70,7 @@ Closes door and switches state to {\ttfamily I\+D\+LE}.
 \end{DoxyParams}
 
 
-Definition at line 78 of file state\+Machine.\+c.
+Definition at line 66 of file state\+Machine.\+c.
 
 \index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+pushed@{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+pushed}}
 \index{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+pushed@{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+pushed}!state\+Machine.\+h@{state\+Machine.\+h}}
@@ -96,7 +90,7 @@ Stops elevator, set all orders in matrix to 0, close door and turn on emergency 
 \end{DoxyParams}
 
 
-Definition at line 102 of file state\+Machine.\+c.
+Definition at line 72 of file state\+Machine.\+c.
 
 \index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+released@{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+released}}
 \index{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+released@{state\+\_\+emergency\+\_\+stop\+\_\+button\+\_\+released}!state\+Machine.\+h@{state\+Machine.\+h}}
@@ -116,7 +110,7 @@ Turns off emergency stop button lamp and switches state to {\ttfamily I\+D\+LE}.
 \end{DoxyParams}
 
 
-Definition at line 129 of file state\+Machine.\+c.
+Definition at line 84 of file state\+Machine.\+c.
 
 \index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+execute\+\_\+new\+\_\+order@{state\+\_\+execute\+\_\+new\+\_\+order}}
 \index{state\+\_\+execute\+\_\+new\+\_\+order@{state\+\_\+execute\+\_\+new\+\_\+order}!state\+Machine.\+h@{state\+Machine.\+h}}
@@ -136,7 +130,7 @@ Calculates {\ttfamily current\+\_\+direction} and set motor direction to {\ttfam
 \end{DoxyParams}
 
 
-Definition at line 153 of file state\+Machine.\+c.
+Definition at line 94 of file state\+Machine.\+c.
 
 \index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+get\+\_\+current\+\_\+direction@{state\+\_\+get\+\_\+current\+\_\+direction}}
 \index{state\+\_\+get\+\_\+current\+\_\+direction@{state\+\_\+get\+\_\+current\+\_\+direction}!state\+Machine.\+h@{state\+Machine.\+h}}
@@ -159,7 +153,7 @@ Returns {\ttfamily current\+\_\+direction}.
 \end{DoxyReturn}
 
 
-Definition at line 178 of file state\+Machine.\+c.
+Definition at line 109 of file state\+Machine.\+c.
 
 \index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+get\+\_\+current\+\_\+floor@{state\+\_\+get\+\_\+current\+\_\+floor}}
 \index{state\+\_\+get\+\_\+current\+\_\+floor@{state\+\_\+get\+\_\+current\+\_\+floor}!state\+Machine.\+h@{state\+Machine.\+h}}
@@ -182,7 +176,7 @@ Returns {\ttfamily current\+\_\+floor}.
 \end{DoxyReturn}
 
 
-Definition at line 13 of file state\+Machine.\+c.
+Definition at line 22 of file state\+Machine.\+c.
 
 \index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+init@{state\+\_\+init}}
 \index{state\+\_\+init@{state\+\_\+init}!state\+Machine.\+h@{state\+Machine.\+h}}
@@ -202,7 +196,7 @@ Initialize elevator\+: Move eleavtor to well defined state. Reset queue matrix. 
 \end{DoxyParams}
 
 
-Definition at line 34 of file state\+Machine.\+c.
+Definition at line 44 of file state\+Machine.\+c.
 
 \index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+open\+\_\+door@{state\+\_\+open\+\_\+door}}
 \index{state\+\_\+open\+\_\+door@{state\+\_\+open\+\_\+door}!state\+Machine.\+h@{state\+Machine.\+h}}
@@ -222,7 +216,7 @@ Opens door, sets all orders at {\ttfamily current\+\_\+floor} to 0 and stops ele
 \end{DoxyParams}
 
 
-Definition at line 48 of file state\+Machine.\+c.
+Definition at line 57 of file state\+Machine.\+c.
 
 \index{state\+Machine.\+h@{state\+Machine.\+h}!state\+\_\+update\+\_\+current\+\_\+floor@{state\+\_\+update\+\_\+current\+\_\+floor}}
 \index{state\+\_\+update\+\_\+current\+\_\+floor@{state\+\_\+update\+\_\+current\+\_\+floor}!state\+Machine.\+h@{state\+Machine.\+h}}
@@ -242,5 +236,5 @@ Updates current floor if floor sensor is triggered. Updates {\ttfamily beetween\
 \end{DoxyParams}
 
 
-Definition at line 17 of file state\+Machine.\+c.
+Definition at line 27 of file state\+Machine.\+c.
 

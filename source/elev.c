@@ -1,3 +1,11 @@
+/**
+* @file
+* @brief Wrapper for libComedi Elevator control.
+* These functions provides an interface to the elevators in the real time lab.
+* 2007, Martin Korsgaard
+*/
+
+
 // Wrapper for libComedi Elevator control.
 // These functions provides an interface to the elevators in the real time lab
 //

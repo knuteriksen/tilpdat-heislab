@@ -1,15 +1,13 @@
 var searchData=
 [
-  ['queue_5fcab_5fright_5ffloor',['queue_cab_right_floor',['../queue_8h.html#ad511590319c3d62a96640ac5c0dff24d',1,'queue.c']]],
-  ['queue_5fchoose_5fdirection',['queue_choose_direction',['../queue_8h.html#a2d72f93bf4355e9be7c69e087bd98d88',1,'queue.c']]],
-  ['queue_5fmatrix_5fempty',['queue_matrix_empty',['../queue_8h.html#abbaca18f296a40d2d932bbe5088aac9b',1,'queue.c']]],
-  ['queue_5forder_5fabove',['queue_order_above',['../queue_8h.html#aaadd5a1c839539e43e74bf16ec23971b',1,'queue.c']]],
-  ['queue_5forder_5fbelow',['queue_order_below',['../queue_8h.html#a6a93944b1ca54e6a7019df5a3fa007fa',1,'queue.c']]],
-  ['queue_5forder_5fsame_5ffloor',['queue_order_same_floor',['../queue_8h.html#ae996be0e0826a094f28fa7de4939cc77',1,'queue.c']]],
-  ['queue_5freset_5ffloor',['queue_reset_floor',['../queue_8h.html#aac2a9ba080f982f3bcda3a4952d09ab9',1,'queue.c']]],
-  ['queue_5freset_5fqueue_5fmatrix',['queue_reset_queue_matrix',['../queue_8h.html#ad9dcd9284e1d05104ace4737dbec28df',1,'queue.c']]],
-  ['queue_5fright_5fdirection',['queue_right_direction',['../queue_8h.html#aecdfa901647dd5390e649866ccf90140',1,'queue.c']]],
-  ['queue_5fshould_5felevator_5fstop',['queue_should_elevator_stop',['../queue_8h.html#a11f17d15c85c37ab303553f7ffb91a85',1,'queue.c']]],
-  ['queue_5fupdate_5fmatrix',['queue_update_matrix',['../queue_8h.html#aa1b49d5dba72844662d41a29bcc91174',1,'queue.c']]],
-  ['queue_5fwrong_5fdirection_5fstop',['queue_wrong_direction_stop',['../queue_8h.html#aaaab7ca018f904624bce5ee802110df5',1,'queue.c']]]
+  ['elev_5fget_5fbutton_5fsignal',['elev_get_button_signal',['../elev_8c.html#a2350a1635233760719700552a6cb0763',1,'elev_get_button_signal(elev_button_type_t button, int floor):&#160;elev.c'],['../elev_8h.html#a2350a1635233760719700552a6cb0763',1,'elev_get_button_signal(elev_button_type_t button, int floor):&#160;elev.c']]],
+  ['elev_5fget_5ffloor_5fsensor_5fsignal',['elev_get_floor_sensor_signal',['../elev_8c.html#a97d30b7e2538acf5647515638070fdc5',1,'elev_get_floor_sensor_signal(void):&#160;elev.c'],['../elev_8h.html#a97d30b7e2538acf5647515638070fdc5',1,'elev_get_floor_sensor_signal(void):&#160;elev.c']]],
+  ['elev_5fget_5fobstruction_5fsignal',['elev_get_obstruction_signal',['../elev_8c.html#acd97a0fbc9013dc954923e25e90be9df',1,'elev_get_obstruction_signal(void):&#160;elev.c'],['../elev_8h.html#acd97a0fbc9013dc954923e25e90be9df',1,'elev_get_obstruction_signal(void):&#160;elev.c']]],
+  ['elev_5fget_5fstop_5fsignal',['elev_get_stop_signal',['../elev_8c.html#ab702d0ff2d7d03172b7ae3829ba13028',1,'elev_get_stop_signal(void):&#160;elev.c'],['../elev_8h.html#ab702d0ff2d7d03172b7ae3829ba13028',1,'elev_get_stop_signal(void):&#160;elev.c']]],
+  ['elev_5finit',['elev_init',['../elev_8c.html#a949b0e1f7c0f03ea6f92008c378e4573',1,'elev_init(void):&#160;elev.c'],['../elev_8h.html#a949b0e1f7c0f03ea6f92008c378e4573',1,'elev_init(void):&#160;elev.c']]],
+  ['elev_5fset_5fbutton_5flamp',['elev_set_button_lamp',['../elev_8c.html#a9e81321c63d80ddf1699bc91593cd9d4',1,'elev_set_button_lamp(elev_button_type_t button, int floor, int value):&#160;elev.c'],['../elev_8h.html#a9e81321c63d80ddf1699bc91593cd9d4',1,'elev_set_button_lamp(elev_button_type_t button, int floor, int value):&#160;elev.c']]],
+  ['elev_5fset_5fdoor_5fopen_5flamp',['elev_set_door_open_lamp',['../elev_8c.html#a6ce9a34b8677b483b0d8f9dc47b42c40',1,'elev_set_door_open_lamp(int value):&#160;elev.c'],['../elev_8h.html#a6ce9a34b8677b483b0d8f9dc47b42c40',1,'elev_set_door_open_lamp(int value):&#160;elev.c']]],
+  ['elev_5fset_5ffloor_5findicator',['elev_set_floor_indicator',['../elev_8c.html#a6af53dd3ebae3a5791ba345eac84d4be',1,'elev_set_floor_indicator(int floor):&#160;elev.c'],['../elev_8h.html#a6af53dd3ebae3a5791ba345eac84d4be',1,'elev_set_floor_indicator(int floor):&#160;elev.c']]],
+  ['elev_5fset_5fmotor_5fdirection',['elev_set_motor_direction',['../elev_8c.html#ac7dccb879f6e812e9d245174a0214536',1,'elev_set_motor_direction(elev_motor_direction_t dirn):&#160;elev.c'],['../elev_8h.html#ac7dccb879f6e812e9d245174a0214536',1,'elev_set_motor_direction(elev_motor_direction_t dirn):&#160;elev.c']]],
+  ['elev_5fset_5fstop_5flamp',['elev_set_stop_lamp',['../elev_8c.html#a85de2a6536b4dd0c83bac19923500740',1,'elev_set_stop_lamp(int value):&#160;elev.c'],['../elev_8h.html#a85de2a6536b4dd0c83bac19923500740',1,'elev_set_stop_lamp(int value):&#160;elev.c']]]
 ];
