@@ -111,7 +111,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad9dcd9284e1d05104ace4737dbec28df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#ad9dcd9284e1d05104ace4737dbec28df">queue_reset_queue_matrix</a> (void)</td></tr>
-<tr class="memdesc:ad9dcd9284e1d05104ace4737dbec28df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all values of queue matrix to 0 and turn off all lights.  <a href="#ad9dcd9284e1d05104ace4737dbec28df">More...</a><br /></td></tr>
+<tr class="memdesc:ad9dcd9284e1d05104ace4737dbec28df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all values of queue matrix to 0 and turns off all lights.  <a href="#ad9dcd9284e1d05104ace4737dbec28df">More...</a><br /></td></tr>
 <tr class="separator:ad9dcd9284e1d05104ace4737dbec28df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac2a9ba080f982f3bcda3a4952d09ab9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#aac2a9ba080f982f3bcda3a4952d09ab9">queue_reset_floor</a> (int floor)</td></tr>
 <tr class="memdesc:aac2a9ba080f982f3bcda3a4952d09ab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set orders at floor <code>floor</code> and turns off light at <code>floor</code>.  <a href="#aac2a9ba080f982f3bcda3a4952d09ab9">More...</a><br /></td></tr>
@@ -120,10 +120,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:aa1b49d5dba72844662d41a29bcc91174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterates through all buttons and checks if any is pushed. If any buttons is pushed the corresponding slot in queue matrix is set to 1 and corresponding lights are turned on.  <a href="#aa1b49d5dba72844662d41a29bcc91174">More...</a><br /></td></tr>
 <tr class="separator:aa1b49d5dba72844662d41a29bcc91174"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11f17d15c85c37ab303553f7ffb91a85"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#a11f17d15c85c37ab303553f7ffb91a85">queue_should_elevator_stop</a> (int floor, int current_dir)</td></tr>
-<tr class="memdesc:a11f17d15c85c37ab303553f7ffb91a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if <code>floor</code> matches elevator cab orders in queue matrix.  <a href="#a11f17d15c85c37ab303553f7ffb91a85">More...</a><br /></td></tr>
+<tr class="memdesc:a11f17d15c85c37ab303553f7ffb91a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if elevator should stop.  <a href="#a11f17d15c85c37ab303553f7ffb91a85">More...</a><br /></td></tr>
 <tr class="separator:a11f17d15c85c37ab303553f7ffb91a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbaca18f296a40d2d932bbe5088aac9b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#abbaca18f296a40d2d932bbe5088aac9b">queue_matrix_empty</a> (int current_floor)</td></tr>
-<tr class="memdesc:abbaca18f296a40d2d932bbe5088aac9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there is any orders above <code>floor</code>.  <a href="#abbaca18f296a40d2d932bbe5088aac9b">More...</a><br /></td></tr>
+<tr class="memdesc:abbaca18f296a40d2d932bbe5088aac9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there is no more orders in queue matrix.  <a href="#abbaca18f296a40d2d932bbe5088aac9b">More...</a><br /></td></tr>
 <tr class="separator:abbaca18f296a40d2d932bbe5088aac9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18fa3ed6d7f822ef54d2f4adf4b349df"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8h.html#a18fa3ed6d7f822ef54d2f4adf4b349df">queue_choose_direction</a> (int floor, int between_floors, int current_dir)</td></tr>
 <tr class="memdesc:a18fa3ed6d7f822ef54d2f4adf4b349df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates next direction of elevator.  <a href="#a18fa3ed6d7f822ef54d2f4adf4b349df">More...</a><br /></td></tr>
@@ -174,7 +174,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, else <code>false</code> </dd></dl>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00119">119</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00150">150</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -192,28 +192,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Checks if there is any orders above <code>floor</code>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">floor</td><td>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, else <code>false</code> Checks if there is any orders below <code>floor</code>. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">floor</td><td>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, else <code>false</code> Checks if there is any orders at <code>floor</code>. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">floor</td><td>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, else <code>false</code> Checks if there is no more orders in queue matrix. </dd></dl>
+<p>Checks if there is no more orders in queue matrix. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">floor</td><td>. </td></tr>
@@ -222,7 +201,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, else <code>false</code> </dd></dl>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00145">145</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00176">176</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -248,7 +227,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00084">84</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00115">115</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -266,7 +245,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set all values of queue matrix to 0 and turn off all lights. </p>
+<p>Set all values of queue matrix to 0 and turns off all lights. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">void.</td><td></td></tr>
@@ -274,7 +253,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00070">70</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00101">101</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -302,30 +281,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Checks if <code>floor</code> matches elevator cab orders in queue matrix. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">floor</td><td>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, else <code>false</code> Checks if there is a order at <code>floor</code> that matches <code>current_dir</code> of elevator </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">floor</td><td>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">current_dir</td><td>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, else <code>false</code> Checks if there is an order in opposite direction that should be executed </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">floor</td><td>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">current_dir</td><td>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, else <code>false</code> Checks if elevator should stop. </dd></dl>
+<p>Checks if elevator should stop. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">floor</td><td>. </td></tr>
@@ -335,7 +291,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, else <code>false</code> </dd></dl>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00112">112</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00143">143</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>
@@ -361,7 +317,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="queue_8c_source.html#l00096">96</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
+<p>Definition at line <a class="el" href="queue_8c_source.html#l00127">127</a> of file <a class="el" href="queue_8c_source.html">queue.c</a>.</p>
 
 </div>
 </div>

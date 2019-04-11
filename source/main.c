@@ -23,7 +23,7 @@ int main() {
       queue_update_matrix (); //Check for new orders
       state_update_current_floor();
 
-      if (elev_get_floor_sensor_signal() >= 0) // != -1
+      if (elev_get_floor_sensor_signal() != (-1))
         elev_set_floor_indicator(state_get_current_floor()); //Update floor indicator if a new flor is reached
 
       if (queue_should_elevator_stop(elev_get_floor_sensor_signal(), state_get_current_direction())) {

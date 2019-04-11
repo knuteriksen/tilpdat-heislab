@@ -14,15 +14,15 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{queue_8h_ad9dcd9284e1d05104ace4737dbec28df}{queue\+\_\+reset\+\_\+queue\+\_\+matrix} (void)
-\begin{DoxyCompactList}\small\item\em Set all values of queue matrix to 0 and turn off all lights. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Set all values of queue matrix to 0 and turns off all lights. \end{DoxyCompactList}\item 
 void \hyperlink{queue_8h_aac2a9ba080f982f3bcda3a4952d09ab9}{queue\+\_\+reset\+\_\+floor} (int floor)
 \begin{DoxyCompactList}\small\item\em Set orders at floor {\ttfamily floor} and turns off light at {\ttfamily floor}. \end{DoxyCompactList}\item 
 void \hyperlink{queue_8h_aa1b49d5dba72844662d41a29bcc91174}{queue\+\_\+update\+\_\+matrix} (void)
 \begin{DoxyCompactList}\small\item\em Iterates through all buttons and checks if any is pushed. If any buttons is pushed the corresponding slot in queue matrix is set to 1 and corresponding lights are turned on. \end{DoxyCompactList}\item 
 bool \hyperlink{queue_8h_a11f17d15c85c37ab303553f7ffb91a85}{queue\+\_\+should\+\_\+elevator\+\_\+stop} (int floor, int current\+\_\+dir)
-\begin{DoxyCompactList}\small\item\em Checks if {\ttfamily floor} matches elevator cab orders in queue matrix. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Checks if elevator should stop. \end{DoxyCompactList}\item 
 bool \hyperlink{queue_8h_abbaca18f296a40d2d932bbe5088aac9b}{queue\+\_\+matrix\+\_\+empty} (int current\+\_\+floor)
-\begin{DoxyCompactList}\small\item\em Checks if there is any orders above {\ttfamily floor}. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Checks if there is no more orders in queue matrix. \end{DoxyCompactList}\item 
 int \hyperlink{queue_8h_a18fa3ed6d7f822ef54d2f4adf4b349df}{queue\+\_\+choose\+\_\+direction} (int floor, int between\+\_\+floors, int current\+\_\+dir)
 \begin{DoxyCompactList}\small\item\em Calculates next direction of elevator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -58,7 +58,7 @@ Calculates next direction of elevator.
 \end{DoxyReturn}
 
 
-Definition at line 119 of file queue.\+c.
+Definition at line 150 of file queue.\+c.
 
 \index{queue.\+h@{queue.\+h}!queue\+\_\+matrix\+\_\+empty@{queue\+\_\+matrix\+\_\+empty}}
 \index{queue\+\_\+matrix\+\_\+empty@{queue\+\_\+matrix\+\_\+empty}!queue.\+h@{queue.\+h}}
@@ -69,32 +69,8 @@ Definition at line 119 of file queue.\+c.
 )}\hypertarget{queue_8h_abbaca18f296a40d2d932bbe5088aac9b}{}\label{queue_8h_abbaca18f296a40d2d932bbe5088aac9b}
 
 
-Checks if there is any orders above {\ttfamily floor}. 
+Checks if there is no more orders in queue matrix. 
 
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em floor} & . \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily true} on success, else {\ttfamily false} Checks if there is any orders below {\ttfamily floor}. 
-\end{DoxyReturn}
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em floor} & . \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily true} on success, else {\ttfamily false} Checks if there is any orders at {\ttfamily floor}. 
-\end{DoxyReturn}
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em floor} & . \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily true} on success, else {\ttfamily false} Checks if there is no more orders in queue matrix. 
-\end{DoxyReturn}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em floor} & . \\
@@ -105,7 +81,7 @@ Checks if there is any orders above {\ttfamily floor}.
 \end{DoxyReturn}
 
 
-Definition at line 145 of file queue.\+c.
+Definition at line 176 of file queue.\+c.
 
 \index{queue.\+h@{queue.\+h}!queue\+\_\+reset\+\_\+floor@{queue\+\_\+reset\+\_\+floor}}
 \index{queue\+\_\+reset\+\_\+floor@{queue\+\_\+reset\+\_\+floor}!queue.\+h@{queue.\+h}}
@@ -125,7 +101,7 @@ Set orders at floor {\ttfamily floor} and turns off light at {\ttfamily floor}.
 \end{DoxyParams}
 
 
-Definition at line 84 of file queue.\+c.
+Definition at line 115 of file queue.\+c.
 
 \index{queue.\+h@{queue.\+h}!queue\+\_\+reset\+\_\+queue\+\_\+matrix@{queue\+\_\+reset\+\_\+queue\+\_\+matrix}}
 \index{queue\+\_\+reset\+\_\+queue\+\_\+matrix@{queue\+\_\+reset\+\_\+queue\+\_\+matrix}!queue.\+h@{queue.\+h}}
@@ -136,7 +112,7 @@ Definition at line 84 of file queue.\+c.
 )}\hypertarget{queue_8h_ad9dcd9284e1d05104ace4737dbec28df}{}\label{queue_8h_ad9dcd9284e1d05104ace4737dbec28df}
 
 
-Set all values of queue matrix to 0 and turn off all lights. 
+Set all values of queue matrix to 0 and turns off all lights. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -145,7 +121,7 @@ Set all values of queue matrix to 0 and turn off all lights.
 \end{DoxyParams}
 
 
-Definition at line 70 of file queue.\+c.
+Definition at line 101 of file queue.\+c.
 
 \index{queue.\+h@{queue.\+h}!queue\+\_\+should\+\_\+elevator\+\_\+stop@{queue\+\_\+should\+\_\+elevator\+\_\+stop}}
 \index{queue\+\_\+should\+\_\+elevator\+\_\+stop@{queue\+\_\+should\+\_\+elevator\+\_\+stop}!queue.\+h@{queue.\+h}}
@@ -157,36 +133,8 @@ Definition at line 70 of file queue.\+c.
 )}\hypertarget{queue_8h_a11f17d15c85c37ab303553f7ffb91a85}{}\label{queue_8h_a11f17d15c85c37ab303553f7ffb91a85}
 
 
-Checks if {\ttfamily floor} matches elevator cab orders in queue matrix. 
+Checks if elevator should stop. 
 
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em floor} & . \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily true} on success, else {\ttfamily false} Checks if there is a order at {\ttfamily floor} that matches {\ttfamily current\+\_\+dir} of elevator 
-\end{DoxyReturn}
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em floor} & . \\
-\hline
-\mbox{\tt in}  & {\em current\+\_\+dir} & . \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily true} on success, else {\ttfamily false} Checks if there is an order in opposite direction that should be executed 
-\end{DoxyReturn}
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em floor} & . \\
-\hline
-\mbox{\tt in}  & {\em current\+\_\+dir} & . \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily true} on success, else {\ttfamily false} Checks if elevator should stop. 
-\end{DoxyReturn}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em floor} & . \\
@@ -199,7 +147,7 @@ Checks if {\ttfamily floor} matches elevator cab orders in queue matrix.
 \end{DoxyReturn}
 
 
-Definition at line 112 of file queue.\+c.
+Definition at line 143 of file queue.\+c.
 
 \index{queue.\+h@{queue.\+h}!queue\+\_\+update\+\_\+matrix@{queue\+\_\+update\+\_\+matrix}}
 \index{queue\+\_\+update\+\_\+matrix@{queue\+\_\+update\+\_\+matrix}!queue.\+h@{queue.\+h}}
@@ -219,5 +167,5 @@ Iterates through all buttons and checks if any is pushed. If any buttons is push
 \end{DoxyParams}
 
 
-Definition at line 96 of file queue.\+c.
+Definition at line 127 of file queue.\+c.
 

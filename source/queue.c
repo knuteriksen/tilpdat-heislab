@@ -12,7 +12,6 @@ int queue_matrix [N_FLOORS][N_BUTTONS] = {} ;
 
 
 //returns true if there is order above elevator
-
 /**
 * @brief Checks if there is any orders above @p floor.
 * @param[in] floor .
@@ -31,8 +30,13 @@ bool queue_order_above (int floor) {
   return false;
 }
 
-//returns true if there is order below elevator
-bool queue_order_below(int floor) {
+
+/**
+* @brief Checks if there is any orders below @p floor.
+* @param[in] floor .
+* @return @c true on success, else @c false
+*/
+bool queue_order_below(int floor) { //returns true if there is order below elevator
   if (floor > 0) {
     for (int f = floor - 1; f >= 0 ; f --) {
       for (int button = 0; button < N_BUTTONS; button ++){
@@ -45,8 +49,13 @@ bool queue_order_below(int floor) {
   return false;
 }
 
-//returns true if there is order at same flor as elevator is at
-bool queue_order_same_floor(int floor) {
+
+/**
+* @brief Checks if there is any orders at @p floor.
+* @param[in] floor .
+* @return @c true on success, else @c false
+*/
+bool queue_order_same_floor(int floor) { //returns true if there is order at same flor as elevator is at
   for (int button = 0; button < N_BUTTONS; button ++){
     if (queue_matrix[floor][button] == 1) {
       return true;
@@ -55,19 +64,35 @@ bool queue_order_same_floor(int floor) {
   return false;
 }
 
-//checks if floor sensor matches BUTTON_COMMAND orders in queue_matrix. floor is floor_sensor
-bool queue_cab_right_floor_stop(int floor) {
+/**
+* @brief Checks if @p floor matches elevator cab orders in queue matrix.
+* @param[in] floor .
+* @return @c true on success, else @c false
+*/
+bool queue_cab_right_floor_stop(int floor) { //checks if floor sensor matches BUTTON_COMMAND orders in queue_matrix. floor is floor_sensor
   return( queue_matrix[floor][N_BUTTONS - 1] == 1 ) ;
 }
 
-//returns true if BUTTON_CALL_UP OR BUTTON_CALL_DOWN at floor in queue_matrix matches current direction
-bool queue_right_direction_stop(int floor, int current_dir) {
+/**
+* @brief Checks if there is a order at @p floor that matches @p current_dir
+*of elevator
+* @param[in] floor .
+* @param [in] current_dir .
+* @return @c true on success, else @c false
+*/
+bool queue_right_direction_stop(int floor, int current_dir) {//returns true if BUTTON_CALL_UP OR BUTTON_CALL_DOWN at floor in queue_matrix matches current direction
   return( ((queue_matrix[floor][BUTTON_CALL_UP] == 1) && (current_dir == DIRN_UP)) ||
   ((queue_matrix[floor][BUTTON_CALL_DOWN] == 1) && (current_dir == DIRN_DOWN)) );
 }
 
-//returns true if elevator should stop when current direction does not equal order direction
-bool queue_wrong_direction_stop (int floor, int current_dir){
+/**
+* @brief Checks if there is an order in opposite direction that should be
+* executed
+* @param[in] floor .
+* @param [in] current_dir .
+* @return @c true on success, else @c false
+*/
+bool queue_wrong_direction_stop (int floor, int current_dir){//returns true if elevator should stop when current direction does not equal order direction
     return( ((current_dir != DIRN_UP) && (queue_matrix[floor][BUTTON_CALL_UP] == 1) && (queue_order_below(floor) == false)) ||
     ((current_dir != DIRN_DOWN) && (queue_matrix[floor][BUTTON_CALL_DOWN] == 1) && (queue_order_above(floor) == false)) );
 }

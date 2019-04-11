@@ -8,36 +8,30 @@ Include dependency graph for queue.\+c\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-bool {\bfseries queue\+\_\+order\+\_\+above} (int floor)\hypertarget{queue_8c_aaadd5a1c839539e43e74bf16ec23971b}{}\label{queue_8c_aaadd5a1c839539e43e74bf16ec23971b}
-
-\item 
-bool {\bfseries queue\+\_\+order\+\_\+below} (int floor)\hypertarget{queue_8c_a6a93944b1ca54e6a7019df5a3fa007fa}{}\label{queue_8c_a6a93944b1ca54e6a7019df5a3fa007fa}
-
-\item 
-bool {\bfseries queue\+\_\+order\+\_\+same\+\_\+floor} (int floor)\hypertarget{queue_8c_ae996be0e0826a094f28fa7de4939cc77}{}\label{queue_8c_ae996be0e0826a094f28fa7de4939cc77}
-
-\item 
-bool {\bfseries queue\+\_\+cab\+\_\+right\+\_\+floor} (int floor)\hypertarget{queue_8c_ad511590319c3d62a96640ac5c0dff24d}{}\label{queue_8c_ad511590319c3d62a96640ac5c0dff24d}
-
-\item 
-bool {\bfseries queue\+\_\+right\+\_\+direction} (int floor, int current\+\_\+dir)\hypertarget{queue_8c_aecdfa901647dd5390e649866ccf90140}{}\label{queue_8c_aecdfa901647dd5390e649866ccf90140}
-
-\item 
-bool {\bfseries queue\+\_\+wrong\+\_\+direction\+\_\+stop} (int floor, int current\+\_\+dir)\hypertarget{queue_8c_aaaab7ca018f904624bce5ee802110df5}{}\label{queue_8c_aaaab7ca018f904624bce5ee802110df5}
-
-\item 
+bool \hyperlink{queue_8c_aaadd5a1c839539e43e74bf16ec23971b}{queue\+\_\+order\+\_\+above} (int floor)
+\begin{DoxyCompactList}\small\item\em Checks if there is any orders above {\ttfamily floor}. \end{DoxyCompactList}\item 
+bool \hyperlink{queue_8c_a6a93944b1ca54e6a7019df5a3fa007fa}{queue\+\_\+order\+\_\+below} (int floor)
+\begin{DoxyCompactList}\small\item\em Checks if there is any orders below {\ttfamily floor}. \end{DoxyCompactList}\item 
+bool \hyperlink{queue_8c_ae996be0e0826a094f28fa7de4939cc77}{queue\+\_\+order\+\_\+same\+\_\+floor} (int floor)
+\begin{DoxyCompactList}\small\item\em Checks if there is any orders at {\ttfamily floor}. \end{DoxyCompactList}\item 
+bool \hyperlink{queue_8c_a88f13aca755887da398f6c0a77b2a4fb}{queue\+\_\+cab\+\_\+right\+\_\+floor\+\_\+stop} (int floor)
+\begin{DoxyCompactList}\small\item\em Checks if {\ttfamily floor} matches elevator cab orders in queue matrix. \end{DoxyCompactList}\item 
+bool \hyperlink{queue_8c_af908801849c866ff6a89e05211062ec8}{queue\+\_\+right\+\_\+direction\+\_\+stop} (int floor, int current\+\_\+dir)
+\begin{DoxyCompactList}\small\item\em Checks if there is a order at {\ttfamily floor} that matches {\ttfamily current\+\_\+dir} of elevator. \end{DoxyCompactList}\item 
+bool \hyperlink{queue_8c_aaaab7ca018f904624bce5ee802110df5}{queue\+\_\+wrong\+\_\+direction\+\_\+stop} (int floor, int current\+\_\+dir)
+\begin{DoxyCompactList}\small\item\em Checks if there is an order in opposite direction that should be executed. \end{DoxyCompactList}\item 
 void \hyperlink{queue_8c_ad9dcd9284e1d05104ace4737dbec28df}{queue\+\_\+reset\+\_\+queue\+\_\+matrix} (void)
-\begin{DoxyCompactList}\small\item\em Set all values of queue matrix to 0 and turn off all lights. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Set all values of queue matrix to 0 and turns off all lights. \end{DoxyCompactList}\item 
 void \hyperlink{queue_8c_aac2a9ba080f982f3bcda3a4952d09ab9}{queue\+\_\+reset\+\_\+floor} (int floor)
 \begin{DoxyCompactList}\small\item\em Set orders at floor {\ttfamily floor} and turns off light at {\ttfamily floor}. \end{DoxyCompactList}\item 
 void \hyperlink{queue_8c_aa1b49d5dba72844662d41a29bcc91174}{queue\+\_\+update\+\_\+matrix} (void)
 \begin{DoxyCompactList}\small\item\em Iterates through all buttons and checks if any is pushed. If any buttons is pushed the corresponding slot in queue matrix is set to 1 and corresponding lights are turned on. \end{DoxyCompactList}\item 
 bool \hyperlink{queue_8c_a11f17d15c85c37ab303553f7ffb91a85}{queue\+\_\+should\+\_\+elevator\+\_\+stop} (int floor, int current\+\_\+dir)
-\begin{DoxyCompactList}\small\item\em Checks if {\ttfamily floor} matches elevator cab orders in queue matrix. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Checks if elevator should stop. \end{DoxyCompactList}\item 
 int \hyperlink{queue_8c_a18fa3ed6d7f822ef54d2f4adf4b349df}{queue\+\_\+choose\+\_\+direction} (int floor, int between\+\_\+floors, int current\+\_\+dir)
 \begin{DoxyCompactList}\small\item\em Calculates next direction of elevator. \end{DoxyCompactList}\item 
 bool \hyperlink{queue_8c_abbaca18f296a40d2d932bbe5088aac9b}{queue\+\_\+matrix\+\_\+empty} (int current\+\_\+floor)
-\begin{DoxyCompactList}\small\item\em Checks if there is any orders above {\ttfamily floor}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Checks if there is no more orders in queue matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,6 +41,29 @@ int {\bfseries queue\+\_\+matrix} \mbox{[}N\+\_\+\+F\+L\+O\+O\+RS\mbox{]}\mbox{[
 
 
 \subsection{Function Documentation}
+\index{queue.\+c@{queue.\+c}!queue\+\_\+cab\+\_\+right\+\_\+floor\+\_\+stop@{queue\+\_\+cab\+\_\+right\+\_\+floor\+\_\+stop}}
+\index{queue\+\_\+cab\+\_\+right\+\_\+floor\+\_\+stop@{queue\+\_\+cab\+\_\+right\+\_\+floor\+\_\+stop}!queue.\+c@{queue.\+c}}
+\subsubsection[{\texorpdfstring{queue\+\_\+cab\+\_\+right\+\_\+floor\+\_\+stop(int floor)}{queue_cab_right_floor_stop(int floor)}}]{\setlength{\rightskip}{0pt plus 5cm}bool queue\+\_\+cab\+\_\+right\+\_\+floor\+\_\+stop (
+\begin{DoxyParamCaption}
+\item[{int}]{floor}
+\end{DoxyParamCaption}
+)}\hypertarget{queue_8c_a88f13aca755887da398f6c0a77b2a4fb}{}\label{queue_8c_a88f13aca755887da398f6c0a77b2a4fb}
+
+
+Checks if {\ttfamily floor} matches elevator cab orders in queue matrix. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em floor} & . \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} on success, else {\ttfamily false} 
+\end{DoxyReturn}
+
+
+Definition at line 72 of file queue.\+c.
+
 \index{queue.\+c@{queue.\+c}!queue\+\_\+choose\+\_\+direction@{queue\+\_\+choose\+\_\+direction}}
 \index{queue\+\_\+choose\+\_\+direction@{queue\+\_\+choose\+\_\+direction}!queue.\+c@{queue.\+c}}
 \subsubsection[{\texorpdfstring{queue\+\_\+choose\+\_\+direction(int floor, int between\+\_\+floors, int current\+\_\+dir)}{queue_choose_direction(int floor, int between_floors, int current_dir)}}]{\setlength{\rightskip}{0pt plus 5cm}int queue\+\_\+choose\+\_\+direction (
@@ -72,7 +89,7 @@ Calculates next direction of elevator.
 \end{DoxyReturn}
 
 
-Definition at line 119 of file queue.\+c.
+Definition at line 150 of file queue.\+c.
 
 \index{queue.\+c@{queue.\+c}!queue\+\_\+matrix\+\_\+empty@{queue\+\_\+matrix\+\_\+empty}}
 \index{queue\+\_\+matrix\+\_\+empty@{queue\+\_\+matrix\+\_\+empty}!queue.\+c@{queue.\+c}}
@@ -83,32 +100,8 @@ Definition at line 119 of file queue.\+c.
 )}\hypertarget{queue_8c_abbaca18f296a40d2d932bbe5088aac9b}{}\label{queue_8c_abbaca18f296a40d2d932bbe5088aac9b}
 
 
-Checks if there is any orders above {\ttfamily floor}. 
+Checks if there is no more orders in queue matrix. 
 
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em floor} & . \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily true} on success, else {\ttfamily false} Checks if there is any orders below {\ttfamily floor}. 
-\end{DoxyReturn}
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em floor} & . \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily true} on success, else {\ttfamily false} Checks if there is any orders at {\ttfamily floor}. 
-\end{DoxyReturn}
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em floor} & . \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily true} on success, else {\ttfamily false} Checks if there is no more orders in queue matrix. 
-\end{DoxyReturn}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em floor} & . \\
@@ -119,7 +112,76 @@ Checks if there is any orders above {\ttfamily floor}.
 \end{DoxyReturn}
 
 
-Definition at line 145 of file queue.\+c.
+Definition at line 176 of file queue.\+c.
+
+\index{queue.\+c@{queue.\+c}!queue\+\_\+order\+\_\+above@{queue\+\_\+order\+\_\+above}}
+\index{queue\+\_\+order\+\_\+above@{queue\+\_\+order\+\_\+above}!queue.\+c@{queue.\+c}}
+\subsubsection[{\texorpdfstring{queue\+\_\+order\+\_\+above(int floor)}{queue_order_above(int floor)}}]{\setlength{\rightskip}{0pt plus 5cm}bool queue\+\_\+order\+\_\+above (
+\begin{DoxyParamCaption}
+\item[{int}]{floor}
+\end{DoxyParamCaption}
+)}\hypertarget{queue_8c_aaadd5a1c839539e43e74bf16ec23971b}{}\label{queue_8c_aaadd5a1c839539e43e74bf16ec23971b}
+
+
+Checks if there is any orders above {\ttfamily floor}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em floor} & . \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} on success, else {\ttfamily false} 
+\end{DoxyReturn}
+
+
+Definition at line 20 of file queue.\+c.
+
+\index{queue.\+c@{queue.\+c}!queue\+\_\+order\+\_\+below@{queue\+\_\+order\+\_\+below}}
+\index{queue\+\_\+order\+\_\+below@{queue\+\_\+order\+\_\+below}!queue.\+c@{queue.\+c}}
+\subsubsection[{\texorpdfstring{queue\+\_\+order\+\_\+below(int floor)}{queue_order_below(int floor)}}]{\setlength{\rightskip}{0pt plus 5cm}bool queue\+\_\+order\+\_\+below (
+\begin{DoxyParamCaption}
+\item[{int}]{floor}
+\end{DoxyParamCaption}
+)}\hypertarget{queue_8c_a6a93944b1ca54e6a7019df5a3fa007fa}{}\label{queue_8c_a6a93944b1ca54e6a7019df5a3fa007fa}
+
+
+Checks if there is any orders below {\ttfamily floor}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em floor} & . \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} on success, else {\ttfamily false} 
+\end{DoxyReturn}
+
+
+Definition at line 39 of file queue.\+c.
+
+\index{queue.\+c@{queue.\+c}!queue\+\_\+order\+\_\+same\+\_\+floor@{queue\+\_\+order\+\_\+same\+\_\+floor}}
+\index{queue\+\_\+order\+\_\+same\+\_\+floor@{queue\+\_\+order\+\_\+same\+\_\+floor}!queue.\+c@{queue.\+c}}
+\subsubsection[{\texorpdfstring{queue\+\_\+order\+\_\+same\+\_\+floor(int floor)}{queue_order_same_floor(int floor)}}]{\setlength{\rightskip}{0pt plus 5cm}bool queue\+\_\+order\+\_\+same\+\_\+floor (
+\begin{DoxyParamCaption}
+\item[{int}]{floor}
+\end{DoxyParamCaption}
+)}\hypertarget{queue_8c_ae996be0e0826a094f28fa7de4939cc77}{}\label{queue_8c_ae996be0e0826a094f28fa7de4939cc77}
+
+
+Checks if there is any orders at {\ttfamily floor}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em floor} & . \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} on success, else {\ttfamily false} 
+\end{DoxyReturn}
+
+
+Definition at line 58 of file queue.\+c.
 
 \index{queue.\+c@{queue.\+c}!queue\+\_\+reset\+\_\+floor@{queue\+\_\+reset\+\_\+floor}}
 \index{queue\+\_\+reset\+\_\+floor@{queue\+\_\+reset\+\_\+floor}!queue.\+c@{queue.\+c}}
@@ -139,7 +201,7 @@ Set orders at floor {\ttfamily floor} and turns off light at {\ttfamily floor}.
 \end{DoxyParams}
 
 
-Definition at line 84 of file queue.\+c.
+Definition at line 115 of file queue.\+c.
 
 \index{queue.\+c@{queue.\+c}!queue\+\_\+reset\+\_\+queue\+\_\+matrix@{queue\+\_\+reset\+\_\+queue\+\_\+matrix}}
 \index{queue\+\_\+reset\+\_\+queue\+\_\+matrix@{queue\+\_\+reset\+\_\+queue\+\_\+matrix}!queue.\+c@{queue.\+c}}
@@ -150,7 +212,7 @@ Definition at line 84 of file queue.\+c.
 )}\hypertarget{queue_8c_ad9dcd9284e1d05104ace4737dbec28df}{}\label{queue_8c_ad9dcd9284e1d05104ace4737dbec28df}
 
 
-Set all values of queue matrix to 0 and turn off all lights. 
+Set all values of queue matrix to 0 and turns off all lights. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -159,48 +221,20 @@ Set all values of queue matrix to 0 and turn off all lights.
 \end{DoxyParams}
 
 
-Definition at line 70 of file queue.\+c.
+Definition at line 101 of file queue.\+c.
 
-\index{queue.\+c@{queue.\+c}!queue\+\_\+should\+\_\+elevator\+\_\+stop@{queue\+\_\+should\+\_\+elevator\+\_\+stop}}
-\index{queue\+\_\+should\+\_\+elevator\+\_\+stop@{queue\+\_\+should\+\_\+elevator\+\_\+stop}!queue.\+c@{queue.\+c}}
-\subsubsection[{\texorpdfstring{queue\+\_\+should\+\_\+elevator\+\_\+stop(int floor, int current\+\_\+dir)}{queue_should_elevator_stop(int floor, int current_dir)}}]{\setlength{\rightskip}{0pt plus 5cm}bool queue\+\_\+should\+\_\+elevator\+\_\+stop (
+\index{queue.\+c@{queue.\+c}!queue\+\_\+right\+\_\+direction\+\_\+stop@{queue\+\_\+right\+\_\+direction\+\_\+stop}}
+\index{queue\+\_\+right\+\_\+direction\+\_\+stop@{queue\+\_\+right\+\_\+direction\+\_\+stop}!queue.\+c@{queue.\+c}}
+\subsubsection[{\texorpdfstring{queue\+\_\+right\+\_\+direction\+\_\+stop(int floor, int current\+\_\+dir)}{queue_right_direction_stop(int floor, int current_dir)}}]{\setlength{\rightskip}{0pt plus 5cm}bool queue\+\_\+right\+\_\+direction\+\_\+stop (
 \begin{DoxyParamCaption}
 \item[{int}]{floor, }
 \item[{int}]{current\+\_\+dir}
 \end{DoxyParamCaption}
-)}\hypertarget{queue_8c_a11f17d15c85c37ab303553f7ffb91a85}{}\label{queue_8c_a11f17d15c85c37ab303553f7ffb91a85}
+)}\hypertarget{queue_8c_af908801849c866ff6a89e05211062ec8}{}\label{queue_8c_af908801849c866ff6a89e05211062ec8}
 
 
-Checks if {\ttfamily floor} matches elevator cab orders in queue matrix. 
+Checks if there is a order at {\ttfamily floor} that matches {\ttfamily current\+\_\+dir} of elevator. 
 
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em floor} & . \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily true} on success, else {\ttfamily false} Checks if there is a order at {\ttfamily floor} that matches {\ttfamily current\+\_\+dir} of elevator 
-\end{DoxyReturn}
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em floor} & . \\
-\hline
-\mbox{\tt in}  & {\em current\+\_\+dir} & . \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily true} on success, else {\ttfamily false} Checks if there is an order in opposite direction that should be executed 
-\end{DoxyReturn}
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em floor} & . \\
-\hline
-\mbox{\tt in}  & {\em current\+\_\+dir} & . \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily true} on success, else {\ttfamily false} Checks if elevator should stop. 
-\end{DoxyReturn}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em floor} & . \\
@@ -213,7 +247,33 @@ Checks if {\ttfamily floor} matches elevator cab orders in queue matrix.
 \end{DoxyReturn}
 
 
-Definition at line 112 of file queue.\+c.
+Definition at line 83 of file queue.\+c.
+
+\index{queue.\+c@{queue.\+c}!queue\+\_\+should\+\_\+elevator\+\_\+stop@{queue\+\_\+should\+\_\+elevator\+\_\+stop}}
+\index{queue\+\_\+should\+\_\+elevator\+\_\+stop@{queue\+\_\+should\+\_\+elevator\+\_\+stop}!queue.\+c@{queue.\+c}}
+\subsubsection[{\texorpdfstring{queue\+\_\+should\+\_\+elevator\+\_\+stop(int floor, int current\+\_\+dir)}{queue_should_elevator_stop(int floor, int current_dir)}}]{\setlength{\rightskip}{0pt plus 5cm}bool queue\+\_\+should\+\_\+elevator\+\_\+stop (
+\begin{DoxyParamCaption}
+\item[{int}]{floor, }
+\item[{int}]{current\+\_\+dir}
+\end{DoxyParamCaption}
+)}\hypertarget{queue_8c_a11f17d15c85c37ab303553f7ffb91a85}{}\label{queue_8c_a11f17d15c85c37ab303553f7ffb91a85}
+
+
+Checks if elevator should stop. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em floor} & . \\
+\hline
+\mbox{\tt in}  & {\em current\+\_\+dir} & . \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} on success, else {\ttfamily false} 
+\end{DoxyReturn}
+
+
+Definition at line 143 of file queue.\+c.
 
 \index{queue.\+c@{queue.\+c}!queue\+\_\+update\+\_\+matrix@{queue\+\_\+update\+\_\+matrix}}
 \index{queue\+\_\+update\+\_\+matrix@{queue\+\_\+update\+\_\+matrix}!queue.\+c@{queue.\+c}}
@@ -233,5 +293,31 @@ Iterates through all buttons and checks if any is pushed. If any buttons is push
 \end{DoxyParams}
 
 
-Definition at line 96 of file queue.\+c.
+Definition at line 127 of file queue.\+c.
+
+\index{queue.\+c@{queue.\+c}!queue\+\_\+wrong\+\_\+direction\+\_\+stop@{queue\+\_\+wrong\+\_\+direction\+\_\+stop}}
+\index{queue\+\_\+wrong\+\_\+direction\+\_\+stop@{queue\+\_\+wrong\+\_\+direction\+\_\+stop}!queue.\+c@{queue.\+c}}
+\subsubsection[{\texorpdfstring{queue\+\_\+wrong\+\_\+direction\+\_\+stop(int floor, int current\+\_\+dir)}{queue_wrong_direction_stop(int floor, int current_dir)}}]{\setlength{\rightskip}{0pt plus 5cm}bool queue\+\_\+wrong\+\_\+direction\+\_\+stop (
+\begin{DoxyParamCaption}
+\item[{int}]{floor, }
+\item[{int}]{current\+\_\+dir}
+\end{DoxyParamCaption}
+)}\hypertarget{queue_8c_aaaab7ca018f904624bce5ee802110df5}{}\label{queue_8c_aaaab7ca018f904624bce5ee802110df5}
+
+
+Checks if there is an order in opposite direction that should be executed. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em floor} & . \\
+\hline
+\mbox{\tt in}  & {\em current\+\_\+dir} & . \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} on success, else {\ttfamily false} 
+\end{DoxyReturn}
+
+
+Definition at line 95 of file queue.\+c.
 

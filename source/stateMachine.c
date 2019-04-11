@@ -26,18 +26,18 @@ int state_get_current_floor(void) {
 //updates current floor when new floor is reached
 void state_update_current_floor(void) {
     int next_floor = elev_get_floor_sensor_signal();
-  if (next_floor != (-1)) {
-    current_floor = next_floor;
-    if (current_direction == DIRN_DOWN) {
-      between_floors = -1;
+    if (next_floor != (-1)) {
+        current_floor = next_floor;
+        if (current_direction == DIRN_DOWN) {
+            between_floors = -1;
+        }
+        else if (current_direction ==DIRN_UP) {
+          between_floors = 1;
+        }
+        else if (current_direction == DIRN_STOP) {
+          between_floors = 0;
+        }
     }
-    else if (current_direction ==DIRN_UP) {
-      between_floors = 1;
-    }
-    else if (current_direction == DIRN_STOP) {
-      between_floors = 0;
-    }
-  }
 }
 
 //initialize elevator
