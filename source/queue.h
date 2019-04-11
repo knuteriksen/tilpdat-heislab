@@ -28,12 +28,13 @@ void queue_reset_floor (int floor);
 */
 void queue_update_matrix(void);
 
+
 /**
 * @brief Checks if @p floor matches elevator cab orders in queue matrix.
 * @param[in] floor .
 * @return @c true on success, else @c false
 */
-bool queue_cab_right_floor(int floor);
+//bool queue_cab_right_floor(int floor);
 
 
 /**
@@ -43,7 +44,7 @@ bool queue_cab_right_floor(int floor);
 * @param [in] current_dir .
 * @return @c true on success, else @c false
 */
-bool queue_right_direction (int floor, int current_dir);
+//bool queue_right_direction (int floor, int current_dir);
 
 
 /**
@@ -53,7 +54,7 @@ bool queue_right_direction (int floor, int current_dir);
 * @param [in] current_dir .
 * @return @c true on success, else @c false
 */
-bool queue_wrong_direction_stop (int floor, int current_dir);
+//bool queue_wrong_direction_stop (int floor, int current_dir);
 
 
 /**
@@ -68,21 +69,21 @@ bool queue_should_elevator_stop (int floor, int current_dir);
 * @param[in] floor .
 * @return @c true on success, else @c false
 */
-bool queue_order_above (int floor);
+//bool queue_order_above (int floor);
 
 /**
 * @brief  //Checks if there is any orders below @p floor.
 * @param[in] floor .
 * @return @c true on success, else @c false
 */
-bool queue_order_below (int floor);
+//bool queue_order_below (int floor);
 
 /**
 * @brief  //Checks if there is any orders at @p floor.
 * @param[in] floor .
 * @return @c true on success, else @c false
 */
-bool queue_order_same_floor(int floor);
+//bool queue_order_same_floor(int floor);
 
 /**
 * @brief  //Checks if there is no more orders in queue matrix.

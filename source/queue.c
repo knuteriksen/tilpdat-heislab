@@ -6,7 +6,7 @@
 //create queue matrix
 int queue_matrix [N_FLOORS][N_BUTTONS] = {} ;
 
- //sets alN_BUTTONSrix values to 0 and turns off lights
+ //sets all values to 0 and turns off lights
 void queue_reset_queue_matrix(void) {
   for (int floor = 0; floor < N_FLOORS; floor++) {
     for (int button = 0; button < N_BUTTONS; button++) {

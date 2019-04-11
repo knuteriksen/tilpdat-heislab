@@ -59,7 +59,7 @@ void state_open_door (void) {
 void state_close_door (void) {
 
   elev_set_door_open_lamp(0); //closes door
-  state = IDLE;
+  //state = IDLE;
 }
 
 void state_emergency_stop_button_pushed (void) {
